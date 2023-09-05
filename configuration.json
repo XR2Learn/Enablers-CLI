@@ -2,6 +2,7 @@
   "model_config": {
   },
   "dataset_config": {
+    "name": "RAVDESS"
   },
   "pre_processing_config": {
   }
