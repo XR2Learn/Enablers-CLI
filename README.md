@@ -13,7 +13,7 @@ A Command Line Interface to use XR2Learn training and inference (not implemented
 
 ### Quick-Start
 
-`python train.py <args-list>`
+`python train.py [OPTIONS]`
 
 `python train.py --help` for a list of arguments and their description.
 
