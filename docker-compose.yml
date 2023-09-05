@@ -1,0 +1,66 @@
+version: '3'
+services:
+  ed-training-audio:
+    image: some.registry.com/xr2learn-enablers/ed-training-audio:latest
+    #    runtime: nvidia
+    volumes:
+      - "./configuration.json:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      - KEY=${KEY}
+  #    entrypoint: /bin/sh -c
+
+  ssl-audio:
+    image: some.registry.com/xr2learn-enablers/ssl-audio:latest
+    #    runtime: nvidia
+    volumes:
+      - "./configuration.json:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      # To include environment variables in the format below
+      - KEY=${KEY}
+    #    entrypoint: /bin/sh -c
+    command: python ssl_audio_modality/pre_train.py
+
+  pre-processing-audio:
+    image: some.registry.com/xr2learn-enablers/pre-processing-audio:latest
+    volumes:
+      - "./configuration.json:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      # To include environment variables in the format below
+      - KEY=${KEY}
+    #    entrypoint: /bin/sh -c
+    command: python pre_processing_audio_modality/preprocess.py
+
+  ssl-features-generation-audio:
+    image: some.registry.com/xr2learn-enablers/ssl-features-generation-audio:latest
+    volumes:
+      - "./configuration.json:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      # To include environment variables in the format below
+      - KEY=${KEY}
+    #    entrypoint: /bin/sh -c
+    command: python ssl_features_extraction_audio_modality/generate_features.py
+
+  handcrafted-features-generation-audio:
+    image: some.registry.com/xr2learn-enablers/handcrafted-features-generation-audio:latest
+    volumes:
+      - "./configuration.json:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      # To include environment variables in the format below
+      - KEY=${KEY}
+    #    entrypoint: /bin/sh -c
+    command: python handcrafted_features_extraction_audio_modality/generate_features.py
