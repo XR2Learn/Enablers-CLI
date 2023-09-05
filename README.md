@@ -6,6 +6,8 @@ A Command Line Interface to use XR2Learn training and inference (not implemented
 
 ### Installing
 
+**Virtual Environment**
+
 **Dependencies**:
 
 - Docker (or Nvidia-Docker for CUDA)

@@ -10,7 +10,8 @@ services:
     working_dir: /app
     environment:
       - KEY=${KEY}
-  #    entrypoint: /bin/sh -c
+    #    entrypoint: /bin/sh -c
+    command: python supervised_audio_modality/train.py
 
   ssl-audio:
     image: some.registry.com/xr2learn-enablers/ssl-audio:latest
@@ -25,6 +26,7 @@ services:
       - KEY=${KEY}
     #    entrypoint: /bin/sh -c
     command: python ssl_audio_modality/pre_train.py
+  #    command: python -m timeit -n 1 "import os; import time; time.sleep(0.5); print(os.environ.get('KEY'))"
 
   pre-processing-audio:
     image: some.registry.com/xr2learn-enablers/pre-processing-audio:latest
