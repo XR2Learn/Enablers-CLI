@@ -1,9 +1,12 @@
 {
-  "model_config": {
+  "model": {
+    "some_config_model": "my model CLI"
   },
-  "dataset_config": {
-    "name": "RAVDESS"
+  "dataset": {
+    "name": "RAVDESS CLI"
   },
-  "pre_processing_config": {
+  "pre_processing": {
+    "some_config_preprocessing": "preprocessing CLI",
+    "handcrafted_config": "handcrafted CLI"
   }
 }

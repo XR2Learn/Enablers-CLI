@@ -43,9 +43,9 @@ def fine_tune_pipeline():
               help='Indicates if Supervised Learning is part of the training pipeline')
 def pipeline(modality, ssl_pre_train, ed_training):
     """Pipeline entry point"""
-    click.echo(modality)
-    click.echo(ssl_pre_train)
-    click.echo(ed_training)
+    # click.echo(modality)
+    # click.echo(ssl_pre_train)
+    # click.echo(ed_training)
     if call_docker(f'pre-processing-{modality}'):
         if ssl_pre_train:
             call_docker(f'ssl-{modality}')
