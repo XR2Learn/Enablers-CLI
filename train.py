@@ -38,7 +38,13 @@ def fine_tune_pipeline():
 
 @click.command()
 @click.option('--modality', type=click.Choice(['audio', 'bm'], case_sensitive=False), required=True, help='Modality')
-@click.option('--ssl_pre_train', required=True, type=bool, help='Indicates if SSL is part of the training pipeline')
+@click.option('--features_type', type=click.Choice(['ssl', 'handcrafted', 'none'], case_sensitive=False), required=True,
+              help='Type of Features')
+@click.option('--ssl_pre_train', type=click.Choice(['encoder_fe', 'encoder_only', 'fe_only'], case_sensitive=False),
+              required=True,
+              help='Indicates which elements of SSL pipeline is included, encoder + features extraction, '
+                   'or encoder only '
+                   'or features extraction only')
 @click.option('--ed_training', required=True, type=bool,
               help='Indicates if Supervised Learning is part of the training pipeline')
 def pipeline(modality, ssl_pre_train, ed_training):
