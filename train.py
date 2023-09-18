@@ -47,7 +47,7 @@ def fine_tune_pipeline():
                    'or features extraction only')
 @click.option('--ed_training', required=True, type=bool,
               help='Indicates if Supervised Learning is part of the training pipeline')
-def pipeline(modality, ssl_pre_train, ed_training):
+def pipeline(modality, ssl_pre_train, ed_training, features_type):
     """Pipeline entry point"""
     # click.echo(modality)
     # click.echo(ssl_pre_train)
