@@ -52,14 +52,37 @@ def pipeline(modality, ssl_pre_train, ed_training, features_type):
     # click.echo(modality)
     # click.echo(ssl_pre_train)
     # click.echo(ed_training)
-    if call_docker(f'pre-processing-{modality}'):
-        if ssl_pre_train:
-            call_docker(f'ssl-{modality}')
-        else:
-            if call_docker(f'handcrafted-features-generation-{modality}'):
-                if ed_training:
-                    # print(f'call docker ed-training-{modality}')
-                    call_docker(f'ed-training-{modality}')
+    if features_type != "none":
+        if call_docker(f'pre-processing-{modality}'):
+            if features_type == 'handcrafted':
+                if call_docker(f'handcrafted-features-generation-{modality}'):
+                    pass
+            else:
+                ssl_pipeline()
+                print('Call SSL pipeline')
+            if ed_training:
+                if call_docker(f'ed-training-{modality}'):
+                    print(f'END success with ED-Training for {modality}')
+            else:
+                print(f'END success without ED-Training for {modality}')
+
+
+
+
+    else:
+        raise TypeError("Custom Dataset not yet support.")
+    # if call_docker(f'pre-processing-{modality}'):
+    #     if ssl_pre_train:
+    #         call_docker(f'ssl-{modality}')
+    #     else:
+    #         if call_docker(f'handcrafted-features-generation-{modality}'):
+    #             if ed_training:
+    #                 # print(f'call docker ed-training-{modality}')
+    #                 call_docker(f'ed-training-{modality}')
+
+
+def ssl_pipeline():
+    pass
 
 
 if __name__ == '__main__':
