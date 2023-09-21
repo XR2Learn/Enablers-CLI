@@ -11,6 +11,17 @@ services:
       - KEY=${KEY}
     command: python supervised_audio_modality/train.py
 
+  ed-training-body-tracking:
+    image: some.registry.com/xr2learn-enablers/ed-training-body-tracking:latest
+    volumes:
+      - "./configuration.json:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      - KEY=${KEY}
+    command: python supervised_body_tracking_modality/train.py
+
   ssl-audio:
     image: some.registry.com/xr2learn-enablers/ssl-audio:latest
     volumes:

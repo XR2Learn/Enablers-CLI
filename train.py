@@ -39,10 +39,6 @@ def call_docker(docker_service_name):
     return success
 
 
-def fine_tune_pipeline():
-    pass
-
-
 @click.command()
 @click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
@@ -67,11 +63,14 @@ def pipeline(modality, ssl_pre_train, ed_training, features_type, dataset):
 
         if call_docker(f'pre-processing-{modality}'):
             pass
+
         if features_type == 'handcrafted':
             if call_docker(f'handcrafted-features-generation-{modality}'):
                 pass
+
         if ssl_pre_train != 'none':
             ssl_pipeline(ssl_pre_train, modality)
+
         if bool(ed_training):
             if call_docker(f'ed-training-{modality}'):
                 pass

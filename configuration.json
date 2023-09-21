@@ -6,7 +6,7 @@
     "name": "RAVDESS CLI"
   },
   "pre_processing": {
-    "some_config_preprocessing": "preprocessing CLI demo with Pedro",
+    "some_config_preprocessing": "preprocessing CLI demo",
     "handcrafted_config": "handcrafted CLI"
   },
   "dataset_config": {
