@@ -45,7 +45,8 @@ def fine_tune_pipeline():
 
 @click.command()
 @click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
-@click.option('--modality', type=click.Choice(['audio', 'bm'], case_sensitive=False), required=False, help='Modality')
+@click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
+              help='Modality')
 @click.option('--features_type', type=click.Choice(['ssl', 'handcrafted'], case_sensitive=False), required=True,
               help='Type of Features')
 @click.option('--ssl_pre_train',
@@ -63,26 +64,31 @@ def pipeline(modality, ssl_pre_train, ed_training, features_type, dataset):
     if dataset in SUPPORTED_DATASETS:
         if not modality:
             modality = SUPPORTED_DATASETS[dataset]
+
         if call_docker(f'pre-processing-{modality}'):
-            if features_type == 'handcrafted':
-                if call_docker(f'handcrafted-features-generation-{modality}'):
-                    pass
-            if ssl_pre_train != 'none':
-                ssl_pipeline(ssl_pre_train, modality)
-            if bool(ed_training):
-                if call_docker(f'ed-training-{modality}'):
-                    pass
+            pass
+        if features_type == 'handcrafted':
+            if call_docker(f'handcrafted-features-generation-{modality}'):
+                pass
+        if ssl_pre_train != 'none':
+            ssl_pipeline(ssl_pre_train, modality)
+        if bool(ed_training):
+            if call_docker(f'ed-training-{modality}'):
+                pass
     else:
         raise TypeError("Custom Dataset not yet support.")
 
 
 def ssl_pipeline(ssl_pre_train, modality):
-    print('calling SSL pipeline')
-    # if ssl_pre_train in ['encoder_fe', 'encoder_only']:
-    #     if call_docker(f'ssl-{modality}'):
-    #         pass
-    # if call_docker(f''):
-    #     pass
+    if ssl_pre_train != 'fe_only':
+        if call_docker(f'ssl-{modality}'):
+            pass
+
+    if ssl_pre_train == "encoder_only":
+        return
+
+    if call_docker(f'ssl-features-generation-{modality}'):
+        pass
 
 
 if __name__ == '__main__':
