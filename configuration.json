@@ -6,7 +6,18 @@
     "name": "RAVDESS CLI"
   },
   "pre_processing": {
-    "some_config_preprocessing": "preprocessing CLI demo",
+    "some_config_preprocessing": "preprocessing CLI demo with Pedro",
     "handcrafted_config": "handcrafted CLI"
+  },
+  "dataset_config": {
+      "dataset_name": "RAVDESS"
+  },
+  "pre_processing_config": {
+      "process": "standardize",
+      "create_splits": true,
+      "target_sr": 21500,
+      "padding": true,
+      "max_length": 5
   }
 }
+

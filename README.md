@@ -22,3 +22,14 @@ A Command Line Interface to use XR2Learn training and inference (not implemented
 `python train.py --help` for a list of arguments and their description.
 
 ### Examples
+`python train.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+
+### Pre-configured Scripts
+`./pre-configured-scripts/audio_pre_train.sh`
+
+`./pre-configured-scripts/audio_fine_tune.sh`
+
+### List of Options
+--dataset: 
+
+--features_type: 
