@@ -30,7 +30,6 @@ def call_docker(docker_service_name):
     # my_vars['KEY'] = 'Great Key'
     print("\n.")
     print(f"Calling Docker {docker_service_name} \n.\n")
-
     docker_cmd = f'docker compose run --rm {docker_service_name}'
     # p1 = subprocess.Popen(docker_cmd.split(' '), env=my_vars)
     p1 = subprocess.Popen(docker_cmd.split(' '))
