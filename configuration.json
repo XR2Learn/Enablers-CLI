@@ -65,7 +65,7 @@
     "kwargs": {
       "lr": 0.0001,
       "optimizer_name": "adam",
-      "freeze_encoder": false
+      "freeze_encoder": true
     }
   },
   "augmentations": {
