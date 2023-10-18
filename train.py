@@ -1,6 +1,7 @@
 import subprocess
-# import os
+import os
 import click
+import json
 
 SUPPORTED_DATASETS = {
     'RAVDESS': 'audio'}
@@ -26,8 +27,11 @@ def call_docker(docker_service_name):
     """
     # In case needed to pass ENVVARS
     # Passing the ENVVARS I want to pass to docker container
+
+
+
     # my_vars = os.environ.copy()
-    # my_vars['KEY'] = 'Great Key'
+    # my_vars['PATH_CUSTOM_SETTINGS'] = 'CUSTOM_SETTINGS'
     print("\n.")
     print(f"Calling Docker {docker_service_name} \n.\n")
     docker_cmd = f'docker compose run --rm {docker_service_name}'

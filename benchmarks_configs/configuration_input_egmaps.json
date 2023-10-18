@@ -28,10 +28,10 @@
   "encoder_config": {
     "from_module": "encoders.cnn1d",
     "class_name": "CNN1D",
-    "input_type": "standardize",
+    "input_type": "eGeMAPs",
     "kwargs": {
       "in_channels": 1,
-      "len_seq": 80000,
+      "len_seq": 88,
       "out_channels": [
         2,
         2,
