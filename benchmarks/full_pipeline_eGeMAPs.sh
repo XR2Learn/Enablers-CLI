@@ -1,9 +1,10 @@
 #!/bin/bash
 
 echo "--------------------"
-echo "FULL PIPELINE WITH STANDARDIZE INPUT"
+echo "FULL PIPELINE WITH eGeMAPS INPUT"
 echo "--------------------"
-PATH_JSON="./benchmarks_configs/configuration_input_standardize.json"
+FILE_NAME=configuration_input_egmaps.json
+PATH_JSON="./benchmarks_configs/$FILE_NAME"
 
 echo "--------------------"
 echo "Pre-processing-audio"
