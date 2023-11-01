@@ -1,8 +1,8 @@
 import subprocess
-import os
+# import os
 import click
-import json
 
+# import json
 SUPPORTED_DATASETS = {
     'RAVDESS': 'audio'}
 
@@ -27,8 +27,6 @@ def call_docker(docker_service_name):
     """
     # In case needed to pass ENVVARS
     # Passing the ENVVARS I want to pass to docker container
-
-
 
     # my_vars = os.environ.copy()
     # my_vars['PATH_CUSTOM_SETTINGS'] = 'CUSTOM_SETTINGS'
