@@ -7,8 +7,8 @@ import unittest
 
 
 class CliTrainTestCase(unittest.TestCase):
-    def setUp(self) -> None:
+    def setUp(self):
         pass
 
-    def tearDown(self) -> None:
+    def tearDown(self):
         pass

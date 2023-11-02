@@ -17,12 +17,12 @@ A Command Line Interface to use XR2Learn training and inference (not implemented
 
 ### Quick-Start
 
-`python train.py [OPTIONS]`
+`python xr2learn_enablers_cli/train.py [OPTIONS]`
 
-`python train.py --help` for a list of arguments and their description.
+`python xr2learn_enablers_cli/train.py --help` for a list of arguments and their description.
 
 ### Examples
-`python train.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+`python xr2learn_enablers_cli/train.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
 ### Pre-configured Scripts
 `./pre-configured-scripts/audio_pre_train.sh`
