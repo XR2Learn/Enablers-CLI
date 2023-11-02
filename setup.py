@@ -1,10 +1,10 @@
 from setuptools import setup
 
 setup(
-    name='supervised_audio_modality',
-    version='0.1',
-    description='Training an ED model using audio data input type.',
+    name='xr2learn_enablers_cli',
+    version='0.1.0',
+    description='Command-Line Interface to access functionalities of Enablers 2-6.',
     author='UM-XR2Learn-Enablers',
-    packages=['supervised_audio_modality'],
+    packages=['xr2learn_enablers_cli'],
     zip_safe=False
 )
