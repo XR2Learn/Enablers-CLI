@@ -1,30 +1,26 @@
 import subprocess
 
 # import os
-import click
 
 # import json
 SUPPORTED_DATASETS = {
     'RAVDESS': 'audio'}
 
 
-@click.command()
-@click.option('--count', default=1, help='Number of greetings.')
-@click.option('--name', prompt='Your name',
-              help='The person to greet.')
-def hello(count, name):
-    """Simple program that greets NAME for a total of COUNT times."""
-    # click.echo(count)
-    # click.echo(name)
-    for x in range(count):
-        click.echo(f"Hello {name}!")
-
-
 def call_docker(docker_service_name):
     """
     Function to call a docker subprocess. And wait until it is processed.
-    :param docker_service_name: STRING - docker service name (from docker-compose.yml)
-    :return: bool if finished with success
+
+    Parameters
+    ----------
+    docker_service_name: str
+        docker service name (from docker-compose.yml).
+
+    Returns
+    -------
+    bool
+        Representing if docker call finished with success.
+
     """
     # In case needed to pass ENVVARS
     # Passing the ENVVARS I want to pass to docker container
@@ -41,23 +37,36 @@ def call_docker(docker_service_name):
     return success
 
 
-# @click.command()
-# @click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
-# @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
-#               help='Modality')
-# @click.option('--features_type', type=click.Choice(['ssl', 'handcrafted'], case_sensitive=False), required=True,
-#               help='Type of Features')
-# @click.option('--ssl_pre_train',
-#               type=click.Choice(['encoder_fe', 'encoder_only', 'fe_only', 'none'], case_sensitive=False),
-#               required=True,
-#               help='Indicates which elements of SSL pipeline is included, encoder + features extraction, '
-#                    'or encoder only '
-#                    'or features extraction only')
-# @click.option('--ed_training', required=True, type=bool,
-#               help='Indicates if Supervised Learning is part of the training pipeline')
-def pipeline(modality, ssl_pre_train, ed_training, features_type, dataset):
+def training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset):
     """
     Pipeline entry point
+
+    Parameters
+    ----------
+    modality: str
+        docker service name (from docker-compose.yml).
+
+    ssl_pre_train: str
+        Indicates which elements of SSL pipeline is included,
+        encoder + features extraction (encoder_fe),
+        encoder only (encoder_only)
+        features extraction only (fe_only),
+        or not using SSL in the training pipeline: (none)
+    ed_training: bool
+        Indicates if Supervised Learning is part of the training pipeline.
+
+    features_type: str
+        Type of features to include in the training pipeline: ssl or handcrafted
+    dataset = str
+        Supported dataset to use.
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    TypeError
+        If the requested dataset is not yet supported.
     """
     if dataset in SUPPORTED_DATASETS:
         if not modality:
@@ -77,7 +86,7 @@ def pipeline(modality, ssl_pre_train, ed_training, features_type, dataset):
             if call_docker(f'ed-training-{modality}'):
                 pass
     else:
-        raise TypeError("Custom Dataset not yet support.")
+        raise TypeError("Requested Dataset not yet support.")
 
 
 def ssl_pipeline(ssl_pre_train, modality):

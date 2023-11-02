@@ -1,6 +1,6 @@
 import click
 
-from xr2learn_enablers_cli.train import pipeline
+from xr2learn_enablers_cli.train import training_pipeline
 
 
 @click.group()
@@ -25,7 +25,7 @@ def cli_general_options(debug):
               help='Indicates if Supervised Learning is part of the training pipeline')
 def train(modality, ssl_pre_train, ed_training, features_type, dataset):
     click.echo('Training Domain')
-    pipeline(modality, ssl_pre_train, ed_training, features_type, dataset)
+    training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset)
 
 
 if __name__ == '__main__':
