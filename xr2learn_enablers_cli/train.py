@@ -1,4 +1,5 @@
 import subprocess
+
 # import os
 import click
 
@@ -40,20 +41,20 @@ def call_docker(docker_service_name):
     return success
 
 
-@click.command()
-@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
-@click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
-              help='Modality')
-@click.option('--features_type', type=click.Choice(['ssl', 'handcrafted'], case_sensitive=False), required=True,
-              help='Type of Features')
-@click.option('--ssl_pre_train',
-              type=click.Choice(['encoder_fe', 'encoder_only', 'fe_only', 'none'], case_sensitive=False),
-              required=True,
-              help='Indicates which elements of SSL pipeline is included, encoder + features extraction, '
-                   'or encoder only '
-                   'or features extraction only')
-@click.option('--ed_training', required=True, type=bool,
-              help='Indicates if Supervised Learning is part of the training pipeline')
+# @click.command()
+# @click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+# @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
+#               help='Modality')
+# @click.option('--features_type', type=click.Choice(['ssl', 'handcrafted'], case_sensitive=False), required=True,
+#               help='Type of Features')
+# @click.option('--ssl_pre_train',
+#               type=click.Choice(['encoder_fe', 'encoder_only', 'fe_only', 'none'], case_sensitive=False),
+#               required=True,
+#               help='Indicates which elements of SSL pipeline is included, encoder + features extraction, '
+#                    'or encoder only '
+#                    'or features extraction only')
+# @click.option('--ed_training', required=True, type=bool,
+#               help='Indicates if Supervised Learning is part of the training pipeline')
 def pipeline(modality, ssl_pre_train, ed_training, features_type, dataset):
     """
     Pipeline entry point
@@ -89,7 +90,3 @@ def ssl_pipeline(ssl_pre_train, modality):
 
     if call_docker(f'ssl-features-generation-{modality}'):
         pass
-
-
-if __name__ == '__main__':
-    pipeline()

@@ -34,17 +34,17 @@ Help:
 ### Examples
 - Training:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+`python xr2learn_enablers_cli/xr2learn_enablers.py train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
 
 - Inference: 
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+`python xr2learn_enablers_cli/xr2learn_enablers.py predict --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
 
 - Personalisation-Tool:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+`python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
 
 
 ### Pre-configured Scripts
