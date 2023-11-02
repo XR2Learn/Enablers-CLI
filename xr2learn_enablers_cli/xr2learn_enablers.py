@@ -2,13 +2,10 @@ import click
 
 from xr2learn_enablers_cli.train import training_pipeline
 
-EXPERIMENT_ID = None
-
 
 @click.group()
 @click.option('--debug/--no-debug', default=False)
-@click.option('--experiment_id', required=False, help='Custom identification for the data experiment run',
-              default='dev_model')
+@click.option('--experiment_id', required=False, help='Custom identification for the data experiment run')
 @click.pass_context
 def cli_general_options(ctx, debug, experiment_id):
     ctx.ensure_object(dict)

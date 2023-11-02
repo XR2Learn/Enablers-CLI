@@ -7,7 +7,7 @@ SUPPORTED_DATASETS = {
     'RAVDESS': 'audio'}
 
 
-def call_docker(docker_service_name):
+def call_docker(docker_service_name, env_vars=None):
     """
     Function to call a docker subprocess. And wait until it is processed.
 
@@ -15,6 +15,8 @@ def call_docker(docker_service_name):
     ----------
     docker_service_name: str
         docker service name (from docker-compose.yml).
+    env_vars: dict
+        A dict with the env vars to pass to docker call.
 
     Returns
     -------
@@ -37,7 +39,7 @@ def call_docker(docker_service_name):
     return success
 
 
-def training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, experiment_id):
+def training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, docker_env_vars):
     """
     Pipeline entry point
 
@@ -57,8 +59,8 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
         Type of features to include in the training pipeline: ssl or handcrafted
     dataset: str
         Supported dataset to use.
-    experiment_id: str
-        A custom experiment identification for the run.
+    docker_env_vars: dict
+        A dict with the env vars to pass to dockers.
     Returns
     -------
     None
