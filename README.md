@@ -9,6 +9,11 @@ A Command Line Interface to use XR2Learn training and inference (not implemented
 ### Installing
 
 **Virtual Environment**
+1. Create virtual environment
+2. Navigate to the XR2Learn-CLI directory 
+3. Install XR2Learn-CLI 
+   
+    `pip install -e .`
 
 **Dependencies**:
 
