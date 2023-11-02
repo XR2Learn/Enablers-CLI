@@ -44,7 +44,7 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
     Parameters
     ----------
     modality: str
-        docker service name (from docker-compose.yml).
+        Input data modality supported by the system
 
     ssl_pre_train: str
         Indicates which elements of SSL pipeline is included,
@@ -90,6 +90,24 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
 
 
 def ssl_pipeline(ssl_pre_train, modality):
+    """
+    Function to deal with ssl pipeline flow logic.
+
+    Parameters
+    ----------
+    ssl_pre_train: str
+        Indicates which elements of SSL pipeline is included,
+        encoder + features extraction (encoder_fe),
+        encoder only (encoder_only)
+        features extraction only (fe_only),
+        or not using SSL in the training pipeline: (none)
+    modality: str
+        Input data modality supported by the system
+
+    Returns
+    -------
+    None
+    """
     if ssl_pre_train != 'fe_only':
         if call_docker(f'ssl-{modality}'):
             pass
