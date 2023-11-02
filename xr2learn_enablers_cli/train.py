@@ -37,7 +37,7 @@ def call_docker(docker_service_name):
     return success
 
 
-def training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset):
+def training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, experiment_id):
     """
     Pipeline entry point
 
@@ -45,7 +45,6 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
     ----------
     modality: str
         Input data modality supported by the system
-
     ssl_pre_train: str
         Indicates which elements of SSL pipeline is included,
         encoder + features extraction (encoder_fe),
@@ -54,11 +53,12 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
         or not using SSL in the training pipeline: (none)
     ed_training: bool
         Indicates if Supervised Learning is part of the training pipeline.
-
     features_type: str
         Type of features to include in the training pipeline: ssl or handcrafted
-    dataset = str
+    dataset: str
         Supported dataset to use.
+    experiment_id: str
+        A custom experiment identification for the run.
     Returns
     -------
     None
@@ -68,6 +68,7 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
     TypeError
         If the requested dataset is not yet supported.
     """
+
     if dataset in SUPPORTED_DATASETS:
         if not modality:
             modality = SUPPORTED_DATASETS[dataset]
