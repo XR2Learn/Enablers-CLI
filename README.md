@@ -1,10 +1,11 @@
 # XR2Learn CLI (Command Line Interface)
 
-A Command Line Interface to use XR2Learn training and inference (not implemented) components.
+A Command Line Interface to use XR2Learn training and inference Enablers 2-6 and their components.
 
-[CLI Workflow Decision Tree](https://drive.google.com/file/d/1a7m6omAY7VN22QZNpegj_fL_hcf_NEzq/view?usp=sharing)
+### Links:
+[CLI Workflow Decision Tree]
 
-[Diagram with Architecture Overview](https://drive.google.com/file/d/1k3yLi9Y8tasFMJFNxIwKY-nRJzPdKPLw/view?usp=sharing)
+[Diagram with Architecture Overview]
 
 ### Installing
 
@@ -26,10 +27,25 @@ Usage:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py [COMMAND] [OPTIONS]`
 
+Help:
+
 `python xr2learn_enablers_cli/xr2learn_enablers.py --help` for a list of arguments and their description.
 
 ### Examples
+- Training:
+
 `python xr2learn_enablers_cli/xr2learn_enablers.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+
+
+- Inference: 
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+
+
+- Personalisation-Tool:
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+
 
 ### Pre-configured Scripts
 `./pre-configured-scripts/audio_pre_train.sh`
@@ -40,3 +56,6 @@ Usage:
 --dataset: 
 
 --features_type: 
+
+[CLI Workflow Decision Tree]: (https://drive.google.com/file/d/1a7m6omAY7VN22QZNpegj_fL_hcf_NEzq/view?usp=sharing)
+[Diagram with Architecture Overview]: (https://drive.google.com/file/d/1k3yLi9Y8tasFMJFNxIwKY-nRJzPdKPLw/view?usp=sharing)
