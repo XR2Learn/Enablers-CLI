@@ -27,7 +27,7 @@ A Command Line Interface to use XR2Learn training and inference Enablers 2-6 and
 
 Usage:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py [COMMAND] [OPTIONS]`
+`python xr2learn_enablers_cli/xr2learn_enablers.py [OPTIONS] [COMMAND] [OPTIONS]`
 
 Help:
 
@@ -37,11 +37,11 @@ Help:
 
 - Training:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
 - Inference:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py predict --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+`python xr2learn_enablers_cli/xr2learn_enablers.py predict`
 
 - Personalisation-Tool:
 
