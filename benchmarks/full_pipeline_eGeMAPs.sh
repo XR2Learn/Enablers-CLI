@@ -4,7 +4,7 @@ echo "--------------------"
 echo "FULL PIPELINE WITH eGeMAPS INPUT"
 echo "--------------------"
 FILE_NAME=configuration_input_egmaps.json
-PATH_JSON="./benchmarks_configs/$FILE_NAME"
+PATH_JSON="./benchmarks/benchmarks_configs/$FILE_NAME"
 
 echo "--------------------"
 echo "Pre-processing-audio"

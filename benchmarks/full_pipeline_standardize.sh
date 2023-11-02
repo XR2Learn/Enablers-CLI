@@ -7,7 +7,7 @@ echo "FULL PIPELINE WITH STANDARDIZE INPUT"
 echo "--------------------"
 
 FILE_NAME=configuration_input_standardize.json
-PATH_JSON="./benchmarks_configs/$FILE_NAME"
+PATH_JSON="./benchmarks/benchmarks_configs/$FILE_NAME"
 
 echo "--------------------"
 echo "Pre-processing-audio"
