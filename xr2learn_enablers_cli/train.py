@@ -1,6 +1,5 @@
+import os
 import subprocess
-
-# import os
 
 # import json
 SUPPORTED_DATASETS = {
@@ -32,8 +31,8 @@ def call_docker(docker_service_name, env_vars=None):
     print("\n.")
     print(f"Calling Docker {docker_service_name} \n.\n")
     docker_cmd = f'docker compose run --rm {docker_service_name}'
-    # p1 = subprocess.Popen(docker_cmd.split(' '), env=my_vars)
-    p1 = subprocess.Popen(docker_cmd.split(' '))
+    p1 = subprocess.Popen(docker_cmd.split(' '), env=env_vars)
+    # p1 = subprocess.Popen(docker_cmd.split(' '))
     exit_code = p1.wait()
     success = exit_code == 0
     return success
@@ -71,28 +70,32 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
         If the requested dataset is not yet supported.
     """
 
+    print(docker_env_vars)
+    env_vars = prepare_env_vars(docker_env_vars)
+    # print(env_vars)
+
     if dataset in SUPPORTED_DATASETS:
         if not modality:
             modality = SUPPORTED_DATASETS[dataset]
 
-        if call_docker(f'pre-processing-{modality}'):
+        if call_docker(f'pre-processing-{modality}', env_vars=env_vars):
             pass
 
         if features_type == 'handcrafted':
-            if call_docker(f'handcrafted-features-generation-{modality}'):
+            if call_docker(f'handcrafted-features-generation-{modality}', env_vars=env_vars):
                 pass
 
         if ssl_pre_train != 'none':
-            ssl_pipeline(ssl_pre_train, modality)
+            ssl_pipeline(ssl_pre_train, modality, env_vars)
 
         if bool(ed_training):
-            if call_docker(f'ed-training-{modality}'):
+            if call_docker(f'ed-training-{modality}', env_vars=env_vars):
                 pass
     else:
         raise TypeError("Requested Dataset not yet support.")
 
 
-def ssl_pipeline(ssl_pre_train, modality):
+def ssl_pipeline(ssl_pre_train, modality, env_vars):
     """
     Function to deal with ssl pipeline flow logic.
 
@@ -112,11 +115,18 @@ def ssl_pipeline(ssl_pre_train, modality):
     None
     """
     if ssl_pre_train != 'fe_only':
-        if call_docker(f'ssl-{modality}'):
+        if call_docker(f'ssl-{modality}', env_vars=env_vars):
             pass
 
     if ssl_pre_train == "encoder_only":
         return
 
-    if call_docker(f'ssl-features-generation-{modality}'):
+    if call_docker(f'ssl-features-generation-{modality}', env_vars=env_vars):
         pass
+
+
+def prepare_env_vars(dict_vars):
+    my_vars = os.environ.copy()
+    for key in dict_vars.keys():
+        my_vars[key] = dict_vars[key]
+    return my_vars

@@ -6,10 +6,15 @@ from xr2learn_enablers_cli.train import training_pipeline
 @click.group()
 @click.option('--debug/--no-debug', default=False)
 @click.option('--experiment_id', required=False, help='Custom identification for the data experiment run')
+@click.option('--config_file', required=False, default=None,
+              help='Path to the JSON configuration file.')
 @click.pass_context
-def cli_general_options(ctx, debug, experiment_id):
+def cli_general_options(ctx, debug, experiment_id, config_file):
     ctx.ensure_object(dict)
-    ctx.obj['experiment_id'] = experiment_id
+    if experiment_id:
+        ctx.obj['EXPERIMENT_ID'] = experiment_id
+    if config_file:
+        ctx.obj['CONFIG_FILE_PATH'] = config_file
     click.echo(f"Debug mode is {'on' if debug else 'off'}")
     click.echo(f"Experiment ID: {experiment_id}\n")
 
@@ -31,7 +36,12 @@ def cli_general_options(ctx, debug, experiment_id):
 @click.pass_context
 def train(ctx, modality, ssl_pre_train, ed_training, features_type, dataset):
     click.echo('Training Domain')
-    training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, ctx.obj['experiment_id'])
+
+    vars_dict = {}
+    for key in ctx.obj.keys():
+        vars_dict[key] = ctx.obj[key]
+
+    training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, vars_dict)
 
 
 if __name__ == '__main__':
