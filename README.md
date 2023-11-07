@@ -1,12 +1,11 @@
 # XR2Learn CLI (Command Line Interface)
 
 A Command Line Interface to use XR2Learn training and inference Enablers 2-6 and their components.
+To access the Enablers' functionalities, you need two elements:
 
-### Links:
-
-[CLI Workflow Decision Tree]
-
-[Diagram with Architecture Overview]
+1. CLI commands and options
+2. A `configuration.json` file (you can provide a JSON configuration file path as an option to the CLI command, if you do
+   not do that, the default file is `./configuration.json`)
 
 ### Installing
 
@@ -58,6 +57,14 @@ Help:
 --dataset:
 
 --features_type:
+
+
+### Links:
+
+[CLI Workflow Decision Tree]
+
+[Diagram with Architecture Overview]
+
 
 [CLI Workflow Decision Tree]: (https://drive.google.com/file/d/1a7m6omAY7VN22QZNpegj_fL_hcf_NEzq/view?usp=sharing)
 
