@@ -1,1 +1,2 @@
 click==8.1.7
+-e file:./#egg=xr2learn_enablers_cli

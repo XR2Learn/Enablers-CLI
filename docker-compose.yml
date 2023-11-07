@@ -8,7 +8,7 @@ services:
       - "./datasets:/app/datasets"
     working_dir: /app
     environment:
-      - KEY=${KEY}
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python supervised_audio_modality/train.py
 
   ed-training-body-tracking:
@@ -19,7 +19,7 @@ services:
       - "./datasets:/app/datasets"
     working_dir: /app
     environment:
-      - KEY=${KEY}
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python supervised_body_tracking_modality/train.py
 
   ssl-audio:
@@ -31,7 +31,7 @@ services:
     working_dir: /app
     environment:
       # To include environment variables in the format below
-      - KEY=${KEY}
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python ssl_audio_modality/pre_train.py
 
   pre-processing-audio:
@@ -43,7 +43,7 @@ services:
     working_dir: /app
     environment:
       # To include environment variables in the format below
-      - KEY=${KEY}
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python pre_processing_audio_modality/preprocess.py
 
   ssl-features-generation-audio:
@@ -55,7 +55,7 @@ services:
     working_dir: /app
     environment:
       # To include environment variables in the format below
-      - KEY=${KEY}
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python ssl_features_extraction_audio_modality/generate_features.py
 
   handcrafted-features-generation-audio:
@@ -67,5 +67,5 @@ services:
     working_dir: /app
     environment:
       # To include environment variables in the format below
-      - KEY=${KEY}
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python handcrafted_features_extraction_audio_modality/generate_features.py
