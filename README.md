@@ -58,6 +58,11 @@ Help:
 
 --features_type:
 
+### Benchmarks 
+
+1. Run benchmarks on Unix based OS:
+`./run_benchmarks.sh`
+
 
 ### Links:
 
