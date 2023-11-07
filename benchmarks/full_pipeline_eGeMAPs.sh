@@ -5,21 +5,12 @@ echo "FULL PIPELINE WITH eGeMAPS INPUT"
 echo "--------------------"
 FILE_NAME=configuration_input_egmaps.json
 PATH_JSON="./benchmarks/benchmarks_configs/$FILE_NAME"
+EXPERIMENT_ID=egemaps_full_pipeline
 
-echo "--------------------"
-echo "Pre-processing-audio"
-echo "--------------------"
-CONFIG_FILE_PATH=$PATH_JSON docker compose run --rm pre-processing-audio
-echo "--------------------"
-echo "SSL-training-audio"
-echo "--------------------"
-CONFIG_FILE_PATH=$PATH_JSON docker compose run --rm ssl-audio
-echo "--------------------"
-echo "SSL-features-extraction-audio"
-echo "--------------------"
-CONFIG_FILE_PATH=$PATH_JSON docker compose run --rm ssl-features-generation-audio
-echo "--------------------"
-echo "Supervised-training-audio"s
-echo "--------------------"
-CONFIG_FILE_PATH=$PATH_JSON docker compose run --rm ed-training-audio
-echo "--------------------"
+# Dockers called during this use-case:
+# Pre-processing
+# Handcrafted features
+# SSL training
+# Sup training
+
+python ./xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id $EXPERIMENT_ID --config_file $PATH_JSON train --dataset RAVDESS --features_type handcrafted --ssl_pre_train encoder_only --ed_training true
