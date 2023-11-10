@@ -40,7 +40,7 @@ Help:
 
 - Inference:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py predict`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 predict --dataset ravdess`
 
 - Personalisation-Tool:
 
