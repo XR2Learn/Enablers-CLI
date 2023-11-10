@@ -1,5 +1,5 @@
-import subprocess
 import os
+import subprocess
 
 
 def call_docker(docker_service_name, env_vars=None):
@@ -36,6 +36,7 @@ def call_docker(docker_service_name, env_vars=None):
 
 def prepare_env_vars(dict_vars):
     my_vars = os.environ.copy()
-    for key in dict_vars.keys():
-        my_vars[key] = dict_vars[key]
+    if dict_vars is not None:
+        for key in dict_vars.keys():
+            my_vars[key] = dict_vars[key]
     return my_vars
