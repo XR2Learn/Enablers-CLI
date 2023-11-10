@@ -34,6 +34,7 @@
   "ssl_config": {
     "from_module": "ssl_methods.VICReg",
     "ssl_framework": "VICReg",
+    "input_type": "standardize",
     "epochs": 20,
     "batch_size": 128,
     "kwargs": {
@@ -44,6 +45,7 @@
     }
   },
   "sup_config": {
+    "input_type": "standardize",
     "epochs": 4,
     "batch_size": 10,
     "use_augmentations_in_sup": true,
