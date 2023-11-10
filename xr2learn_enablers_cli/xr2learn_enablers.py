@@ -1,5 +1,6 @@
 import click
 
+from xr2learn_enablers_cli.predict import inference_pipeline
 from xr2learn_enablers_cli.train import training_pipeline
 
 
@@ -42,6 +43,19 @@ def train(ctx, modality, ssl_pre_train, ed_training, features_type, dataset):
         vars_dict[key] = ctx.obj[key]
 
     training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, vars_dict)
+
+
+@cli_general_options.command()
+@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+@click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
+              help='Modality')
+@click.pass_context
+def predict(ctx, modality, dataset):
+    vars_dict = {}
+    for key in ctx.obj.keys():
+        vars_dict[key] = ctx.obj[key]
+
+    inference_pipeline(modality, dataset, vars_dict)
 
 
 if __name__ == '__main__':
