@@ -10,6 +10,9 @@
     "padding": true,
     "max_length": 5
   },
+  "inference_config": {
+    "features": "SSL_features"
+  },
   "handcrafted_features_config": {
     "MFCC": {
       "sample_rate": 16000,
@@ -28,7 +31,6 @@
   "encoder_config": {
     "from_module": "encoders.cnn1d",
     "class_name": "CNN1D",
-    "input_type": "eGeMAPs",
     "kwargs": {
       "in_channels": 1,
       "len_seq": 88,
@@ -49,6 +51,7 @@
   "ssl_config": {
     "from_module": "ssl_methods.VICReg",
     "ssl_framework": "VICReg",
+    "input_type": "eGeMAPs",
     "epochs": 20,
     "batch_size": 128,
     "kwargs": {
@@ -60,6 +63,7 @@
   },
   "sup_config": {
     "epochs": 20,
+    "input_type": "eGeMAPs",
     "batch_size": 128,
     "use_augmentations_in_sup": true,
     "kwargs": {
