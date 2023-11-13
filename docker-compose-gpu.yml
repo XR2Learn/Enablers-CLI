@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  ed-training-audio:
+    image: some.registry.com/xr2learn-enablers/ed-training-audio:latest-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]
+
+  ssl-audio:
+    image: some.registry.com/xr2learn-enablers/ssl-audio:latest-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]
+
+
+  ssl-features-generation-audio:
+    image: some.registry.com/xr2learn-enablers/ssl-features-generation-audio:latest-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]

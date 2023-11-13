@@ -54,6 +54,15 @@ Help:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
 
+### GPU
+To use GPU, include an option with value true `--gpu true` before the command.
+
+Example: 
+
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 --gpu true train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+
+
 ### Pre-configured Scripts
 
 `./pre-configured-scripts/audio_pre_train.sh`
@@ -65,6 +74,10 @@ Help:
 
 1. Run benchmarks on Unix based OS:
 `./run_benchmarks.sh`
+
+2. Run benchmarks using GPU
+`GPU=true ./run_benchmarks.sh`
+
 
 
 ### Links:

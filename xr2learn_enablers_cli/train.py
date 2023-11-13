@@ -5,7 +5,7 @@ from xr2learn_enablers_cli.conf import SUPPORTED_DATASETS
 # import json
 
 
-def training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, docker_env_vars):
+def training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, docker_env_vars, is_gpu):
     """
     Pipeline entry point
 
@@ -38,6 +38,7 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
     """
 
     print(docker_env_vars)
+    # is_gpu = docker_env_vars.get('GPU', False)
     env_vars = prepare_env_vars(docker_env_vars)
     # print(env_vars)
 
@@ -53,16 +54,16 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
                 pass
 
         if ssl_pre_train != 'none':
-            ssl_pipeline(ssl_pre_train, modality, env_vars)
+            ssl_pipeline(ssl_pre_train, modality, env_vars, is_gpu)
 
         if bool(ed_training):
-            if call_docker(f'ed-training-{modality}', env_vars=env_vars):
+            if call_docker(f'ed-training-{modality}', env_vars=env_vars, gpu=is_gpu):
                 pass
     else:
         raise TypeError("Requested Dataset not yet support.")
 
 
-def ssl_pipeline(ssl_pre_train, modality, env_vars):
+def ssl_pipeline(ssl_pre_train, modality, env_vars, gpu):
     """
     Function to deal with ssl pipeline flow logic.
 
@@ -76,17 +77,22 @@ def ssl_pipeline(ssl_pre_train, modality, env_vars):
         or not using SSL in the training pipeline: (none)
     modality: str
         Input data modality supported by the system
+    env_vars: dict
+        A dict with the env vars to pass to dockers.
+    gpu: bool
+        If True: Indicates components should use CUDA
+        If False: Indicates components should use CPU
 
     Returns
     -------
     None
     """
     if ssl_pre_train != 'fe_only':
-        if call_docker(f'ssl-{modality}', env_vars=env_vars):
+        if call_docker(f'ssl-{modality}', env_vars=env_vars, gpu=gpu):
             pass
 
     if ssl_pre_train == "encoder_only":
         return
 
-    if call_docker(f'ssl-features-generation-{modality}', env_vars=env_vars):
+    if call_docker(f'ssl-features-generation-{modality}', env_vars=env_vars, gpu=gpu):
         pass
