@@ -38,9 +38,17 @@ Help:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
-- Inference:
+- Inference (Predict):
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 predict --dataset ravdess`
+
+- Inference (Multimodal Fusion):
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 multimodal --dataset ravdess`
+
+- Inference (Evaluation):
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 evaluate --dataset ravdess`
 
 - Personalisation-Tool:
 
@@ -52,11 +60,6 @@ Help:
 
 `./pre-configured-scripts/audio_fine_tune.sh`
 
-### List of Options
-
---dataset:
-
---features_type:
 
 ### Benchmarks 
 
