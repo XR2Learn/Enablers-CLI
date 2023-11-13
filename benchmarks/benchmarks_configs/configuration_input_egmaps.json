@@ -10,6 +10,9 @@
     "padding": true,
     "max_length": 5
   },
+  "inference_config": {
+    "features": "SSL_features"
+  },
   "handcrafted_features_config": {
     "MFCC": {
       "sample_rate": 16000,
