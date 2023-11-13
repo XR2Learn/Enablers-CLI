@@ -13,10 +13,10 @@ def inference_pipeline(modality, dataset, docker_env_vars):
     if call_docker(f'emotion-classification-{modality}', env_vars=env_vars):
         pass
 
-    return
 
     if call_docker(f'fusion-layer', env_vars=env_vars):
         pass
+
 
     if call_docker(f'ed-evaluation', env_vars=env_vars):
         pass
