@@ -1,6 +1,6 @@
 import click
 
-from xr2learn_enablers_cli.predict import inference_pipeline
+from xr2learn_enablers_cli.predict import inference_pipeline, fusion_pipeline, evaluation_pipeline
 from xr2learn_enablers_cli.train import training_pipeline
 
 
@@ -56,6 +56,28 @@ def predict(ctx, modality, dataset):
         vars_dict[key] = ctx.obj[key]
 
     inference_pipeline(modality, dataset, vars_dict)
+
+
+@cli_general_options.command()
+@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+@click.pass_context
+def multimodal(ctx, dataset):
+    vars_dict = {}
+    for key in ctx.obj.keys():
+        vars_dict[key] = ctx.obj[key]
+
+    fusion_pipeline(dataset, vars_dict)
+
+
+@cli_general_options.command()
+@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+@click.pass_context
+def evaluate(ctx, dataset):
+    vars_dict = {}
+    for key in ctx.obj.keys():
+        vars_dict[key] = ctx.obj[key]
+
+    evaluation_pipeline(dataset, vars_dict)
 
 
 if __name__ == '__main__':

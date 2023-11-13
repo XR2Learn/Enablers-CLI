@@ -14,9 +14,19 @@ def inference_pipeline(modality, dataset, docker_env_vars):
         pass
 
 
-    if call_docker(f'fusion-layer', env_vars=env_vars):
-        pass
+def evaluation_pipeline(dataset, docker_env_vars):
+    print(docker_env_vars)
+    env_vars = prepare_env_vars(docker_env_vars)
+
+    if dataset in SUPPORTED_DATASETS:
+        if call_docker(f'ed-evaluation', env_vars=env_vars):
+            pass
 
 
-    if call_docker(f'ed-evaluation', env_vars=env_vars):
-        pass
+def fusion_pipeline(dataset, docker_env_vars):
+    print(docker_env_vars)
+    env_vars = prepare_env_vars(docker_env_vars)
+
+    if dataset in SUPPORTED_DATASETS:
+        if call_docker(f'fusion-layer', env_vars=env_vars):
+            pass
