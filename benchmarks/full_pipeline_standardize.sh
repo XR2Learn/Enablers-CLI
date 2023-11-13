@@ -15,7 +15,7 @@ EXPERIMENT_ID=standardize_full_pipeline
 # SSL training
 # Sup training
 
-python ./xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id $EXPERIMENT_ID --config_file $PATH_JSON train --dataset RAVDESS --features_type ssl --ssl_pre_train encoder_only --ed_training true
+python ./xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id $EXPERIMENT_ID --config_file $PATH_JSON train --dataset RAVDESS --features_type ssl --ssl_pre_train encoder_fe --ed_training true
 
 
 #echo "--------------------"
