@@ -22,9 +22,7 @@ To access the Enablers' functionalities, you need two elements:
 - Docker (or Nvidia-Docker for CUDA)
 - Python 3.10
 
-### Quick-Start
-
-Usage:
+### Usage:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py [OPTIONS] [COMMAND] [OPTIONS]`
 
@@ -79,6 +77,11 @@ Example:
 `GPU=true ./run_benchmarks.sh`
 
 
+### Compatibility
+
+CLI `v0.1.0` is compatible with: 
+- XR2Learn Training `v.0.1.0` and `v0.2.0`
+- XR2Learn Inference `v.0.1.0`
 
 ### Links:
 
