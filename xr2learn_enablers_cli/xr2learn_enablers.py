@@ -9,15 +9,21 @@ from xr2learn_enablers_cli.train import training_pipeline
 @click.option('--experiment_id', required=False, help='Custom identification for the data experiment run')
 @click.option('--config_file', required=False, default=None,
               help='Path to the JSON configuration file.')
+@click.option('--gpu', required=False, default=False, type=bool,
+              help='Run components using CUDA')
 @click.pass_context
-def cli_general_options(ctx, debug, experiment_id, config_file):
+def cli_general_options(ctx, debug, experiment_id, config_file, gpu):
     ctx.ensure_object(dict)
     if experiment_id:
         ctx.obj['EXPERIMENT_ID'] = experiment_id
     if config_file:
         ctx.obj['CONFIG_FILE_PATH'] = config_file
+    if gpu:
+        ctx.obj['GPU'] = gpu
     click.echo(f"Debug mode is {'on' if debug else 'off'}")
-    click.echo(f"Experiment ID: {experiment_id}\n")
+    device_running = 'GPU' if gpu else 'CPU'
+    click.echo(f"Running with {device_running}\n")
+    click.echo(f"Experiment ID: {experiment_id}")
 
 
 @cli_general_options.command()
@@ -40,9 +46,13 @@ def train(ctx, modality, ssl_pre_train, ed_training, features_type, dataset):
 
     vars_dict = {}
     for key in ctx.obj.keys():
-        vars_dict[key] = ctx.obj[key]
+        # Think of a better way to do this later!!
+        if key != 'GPU':
+            vars_dict[key] = ctx.obj[key]
 
-    training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, vars_dict)
+    is_gpu = ctx.obj.get('GPU', False)
+
+    training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, vars_dict, is_gpu)
 
 
 @cli_general_options.command()
@@ -53,7 +63,8 @@ def train(ctx, modality, ssl_pre_train, ed_training, features_type, dataset):
 def predict(ctx, modality, dataset):
     vars_dict = {}
     for key in ctx.obj.keys():
-        vars_dict[key] = ctx.obj[key]
+        if key != 'GPU':
+            vars_dict[key] = ctx.obj[key]
 
     inference_pipeline(modality, dataset, vars_dict)
 
@@ -64,7 +75,8 @@ def predict(ctx, modality, dataset):
 def multimodal(ctx, dataset):
     vars_dict = {}
     for key in ctx.obj.keys():
-        vars_dict[key] = ctx.obj[key]
+        if key != 'GPU':
+            vars_dict[key] = ctx.obj[key]
 
     fusion_pipeline(dataset, vars_dict)
 
@@ -75,7 +87,8 @@ def multimodal(ctx, dataset):
 def evaluate(ctx, dataset):
     vars_dict = {}
     for key in ctx.obj.keys():
-        vars_dict[key] = ctx.obj[key]
+        if key != 'GPU':
+            vars_dict[key] = ctx.obj[key]
 
     evaluation_pipeline(dataset, vars_dict)
 
