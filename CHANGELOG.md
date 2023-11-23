@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added 
+- More documentation. 
+
 ## [0.1.0] - 2023 - 11 - 14
 ### Added
 - Provides an interface for accessing functionalities from Enablers 2-5 and their components. 
