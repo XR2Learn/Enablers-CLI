@@ -1,4 +1,6 @@
-# XR2Learn CLI (Command Line Interface)
+![XR2Learn](https://raw.githubusercontent.com/XR2Learn/.github/5c0fada6136915b389c1cd2151a0dd2cfc4a5aac/images/XR2Learn%20logo.png)
+
+# Enablers CLI (Command Line Interface)
 
 A Command Line Interface to use XR2Learn training and inference Enablers 2-6 and their components.
 To access the Enablers' functionalities, you need two elements:
