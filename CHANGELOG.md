@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2023 - 11 - 28
 ### Added 
 - More documentation. 
 
@@ -36,3 +37,4 @@ Example of Categories to use in each release
 
 [unreleased]: https://github.com/um-xr2learn-enablers/XR2Learn-Inference/compare/v0.1.0...master
 [0.1.0]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.1.0
+[0.1.1]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.1.1
