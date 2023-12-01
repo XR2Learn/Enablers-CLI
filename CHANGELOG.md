@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added 
+- Unit Tests for train command
+
 ## [0.1.1] - 2023 - 11 - 28
 ### Added 
 - More documentation. 
