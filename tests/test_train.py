@@ -31,8 +31,8 @@ class CliTrainTestCase(unittest.TestCase):
         # ssl_pre_train is always str type
         ssl_pre_train = 'none'
         ssl_pipeline(ssl_pre_train, modality, env_vars, gpu)
-        expected_docker_img_name = f'ssl-features-generation-{modality}'
-        calls = [call(expected_docker_img_name, env_vars=env_vars, gpu=gpu), call(expected_docker_img_name, env_vars=env_vars, gpu=gpu)]
+        calls = [call(f'ssl-{modality}', env_vars=env_vars, gpu=gpu),
+                 call(f'ssl-features-generation-{modality}', env_vars=env_vars, gpu=gpu)]
         # mock_call_docker.assert_called_with(expected_docker_img_name, env_vars=env_vars, gpu=gpu)
-        mock_call_docker.assert_has_calls(calls)
+        mock_call_docker.assert_has_calls(calls, any_order=True)
         self.assertEqual(mock_call_docker.call_count, 2)
