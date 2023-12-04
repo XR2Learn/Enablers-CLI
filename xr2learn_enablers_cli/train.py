@@ -88,9 +88,12 @@ def ssl_pipeline(ssl_pre_train, modality, env_vars, gpu):
     None
     """
     if ssl_pre_train != 'fe_only':
-        call_docker(f'ssl-{modality}', env_vars=env_vars, gpu=gpu)
+        # The most correct is using the encoder passed on config file. And only train if no enconder has been passed.
+        if call_docker(f'ssl-{modality}', env_vars=env_vars, gpu=gpu):
+            pass
 
     if ssl_pre_train == "encoder_only":
         return
 
-    call_docker(f'ssl-features-generation-{modality}', env_vars=env_vars, gpu=gpu)
+    if call_docker(f'ssl-features-generation-{modality}', env_vars=env_vars, gpu=gpu):
+        pass
