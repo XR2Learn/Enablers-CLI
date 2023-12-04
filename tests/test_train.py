@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, call
 
-from xr2learn_enablers_cli.train import ssl_pipeline
+from xr2learn_enablers_cli.train import ssl_pipeline, training_pipeline
 
 
 class CliTrainTestCase(unittest.TestCase):
@@ -45,5 +45,14 @@ class CliTrainTestCase(unittest.TestCase):
         mock_call_docker.assert_has_calls(calls)
         self.assertEqual(mock_call_docker.call_count, 1)
 
-    def test_training_pipeline(self):
-        pass
+    @patch('xr2learn_enablers_cli.train.call_docker')
+    def test_training_pipeline_call_dockers_with_correct_parameters_with_full_pipeline_no_gpu(self, mock_call_docker):
+        modality = 'audio'
+        ssl_pre_train = 'encoder_fe'
+        ed_training = True
+        features_type = 'handcrafted'
+        dataset = 'RAVDESS'
+        docker_env_vars = {'env': 'value'}
+        is_gpu = False
+        training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, docker_env_vars, is_gpu)
+        self.assertEqual(mock_call_docker.call_count, 5)
