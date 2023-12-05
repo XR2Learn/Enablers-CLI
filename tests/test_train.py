@@ -45,8 +45,10 @@ class CliTrainTestCase(unittest.TestCase):
         mock_call_docker.assert_has_calls(calls)
         self.assertEqual(mock_call_docker.call_count, 1)
 
+    @patch('xr2learn_enablers_cli.train.prepare_env_vars')
     @patch('xr2learn_enablers_cli.train.call_docker')
-    def test_training_pipeline_call_dockers_with_correct_parameters_with_full_pipeline_no_gpu(self, mock_call_docker):
+    def test_training_pipeline_call_dockers_with_correct_parameters_with_full_pipeline_no_gpu(self, mock_call_docker,
+                                                                                              mock_prep_envs):
         modality = 'audio'
         ssl_pre_train = 'encoder_fe'
         ed_training = True
@@ -54,5 +56,13 @@ class CliTrainTestCase(unittest.TestCase):
         dataset = 'RAVDESS'
         docker_env_vars = {'env': 'value'}
         is_gpu = False
+        mock_call_docker.return_value = True
+        mock_prep_envs.return_value = {'env': 'value'}
         training_pipeline(modality, ssl_pre_train, ed_training, features_type, dataset, docker_env_vars, is_gpu)
+        calls = [call(f'pre-processing-{modality}', env_vars=docker_env_vars),
+                 call(f'handcrafted-features-generation-{modality}', env_vars=docker_env_vars),
+                 call(f'ssl-{modality}', env_vars=docker_env_vars, gpu=is_gpu),
+                 call(f'ssl-features-generation-{modality}', env_vars=docker_env_vars, gpu=is_gpu),
+                 call(f'ed-training-{modality}', env_vars=docker_env_vars, gpu=is_gpu)]
+        mock_call_docker.assert_has_calls(calls)
         self.assertEqual(mock_call_docker.call_count, 5)
