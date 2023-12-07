@@ -37,7 +37,7 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
         If the requested dataset is not yet supported.
     """
 
-    print(docker_env_vars)
+    # print(docker_env_vars)
     # is_gpu = docker_env_vars.get('GPU', False)
     env_vars = prepare_env_vars(docker_env_vars)
     # print(env_vars)
