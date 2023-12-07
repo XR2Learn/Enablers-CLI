@@ -37,7 +37,7 @@ def training_pipeline(modality, ssl_pre_train, ed_training, features_type, datas
         If the requested dataset is not yet supported.
     """
 
-    print(docker_env_vars)
+    # print(docker_env_vars)
     # is_gpu = docker_env_vars.get('GPU', False)
     env_vars = prepare_env_vars(docker_env_vars)
     # print(env_vars)
@@ -88,6 +88,7 @@ def ssl_pipeline(ssl_pre_train, modality, env_vars, gpu):
     None
     """
     if ssl_pre_train != 'fe_only':
+        # The most correct is using the encoder passed on config file. And only train if no encoder has been passed.
         if call_docker(f'ssl-{modality}', env_vars=env_vars, gpu=gpu):
             pass
 
