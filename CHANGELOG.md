@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2023 - 12 - 07
+
 ### Added
 
 - Unit Tests for training and inference components.
@@ -49,3 +51,5 @@ Example of Categories to use in each release
 [0.1.0]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.1.0
 
 [0.1.1]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.1.1
+
+[0.1.2]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.1.2
