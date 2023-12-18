@@ -4,7 +4,8 @@
     "number_of_labels": 8
   },
   "inference_config": {
-    "features": "SSL_features"
+    "features": "SSL_features",
+    "mode": "features"
   },
   "pre_processing_config": {
     "process": "standardize",

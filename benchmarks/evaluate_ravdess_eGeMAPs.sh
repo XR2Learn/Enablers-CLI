@@ -15,4 +15,4 @@ EXPERIMENT_ID=egemaps_full_pipeline
 # SSL training
 # Sup training
 
-python ./xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id $EXPERIMENT_ID evaluate --dataset ravdess
+python ./xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id $EXPERIMENT_ID --config_file $PATH_JSON evaluate --dataset ravdess

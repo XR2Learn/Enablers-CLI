@@ -11,8 +11,7 @@
     "max_length": 5
   },
   "inference_config": {
-    "features": "SSL_features",
-    "mode": "features"
+    "mode": "end-to-end"
   },
   "handcrafted_features_config": {
     "MFCC": {
