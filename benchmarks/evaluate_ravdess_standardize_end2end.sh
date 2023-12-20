@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# With Frozen Encoder (i.e., pre-train encoder + fine-tuning train)
-
 echo "--------------------"
 echo "EVALUATE RAVDESS AND STANDARDIZE"
 echo "--------------------"
