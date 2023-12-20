@@ -5,7 +5,7 @@ echo "FULL PIPELINE WITH eGeMAPS INPUT"
 echo "--------------------"
 FILE_NAME=configuration_input_egmaps_end2end.json
 PATH_JSON="./benchmarks/benchmarks_configs/$FILE_NAME"
-EXPERIMENT_ID=egemaps_full_pipeline
+EXPERIMENT_ID=egemaps_full_pipeline_end2end
 
 if [ -z "$GPU" ]
 then
