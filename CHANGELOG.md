@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+
+- Wav2vec + Linear Classifier configurations and benchmarks
+
+### Changed
+
+- Inference benchmarks exploiting config file paths defined in bash scripts
+- Updated configs to use inference with two modes: SSL features and end2end
 
 ## [0.1.2] - 2023 - 12 - 07
 
