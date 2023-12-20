@@ -1,3 +1,4 @@
+[ -e ./logs ] && rm -r ./logs
 
 export GPU=true;
 

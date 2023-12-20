@@ -1,4 +1,6 @@
 import click
+import logging
+import os
 
 from xr2learn_enablers_cli.predict import inference_pipeline, fusion_pipeline, evaluation_pipeline
 from xr2learn_enablers_cli.train import training_pipeline
@@ -11,8 +13,10 @@ from xr2learn_enablers_cli.train import training_pipeline
               help='Path to the JSON configuration file.')
 @click.option('--gpu', required=False, default=False, type=bool,
               help='Run components using CUDA')
+@click.option('--log_dir', required=False, default="./logs",
+              help='Path to the directory with logs.')
 @click.pass_context
-def cli_general_options(ctx, debug, experiment_id, config_file, gpu):
+def cli_general_options(ctx, debug, experiment_id, config_file, gpu, log_dir):
     ctx.ensure_object(dict)
     if experiment_id:
         ctx.obj['EXPERIMENT_ID'] = experiment_id
@@ -24,6 +28,12 @@ def cli_general_options(ctx, debug, experiment_id, config_file, gpu):
     device_running = 'GPU' if gpu else 'CPU'
     click.echo(f"Running with {device_running}\n")
     click.echo(f"Experiment ID: {experiment_id}")
+    os.makedirs(log_dir, exist_ok=True)
+    logging.basicConfig(
+        filename=os.path.join(log_dir, f'{experiment_id}.log'),
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
 
 
 @cli_general_options.command()
