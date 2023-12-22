@@ -2,7 +2,7 @@ import logging
 import os
 import subprocess
 
-from logger import logging_function_exit_status
+from xr2learn_enablers_cli.logger import logging_function_exit_status
 
 
 @logging_function_exit_status(logger=logging.getLogger("cli_logger"))
