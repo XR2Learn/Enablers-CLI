@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Wav2vec + Linear Classifier configurations and benchmarks
+- Benchmark logger to collect summaries for `call_docker`
 
 ### Changed
 
