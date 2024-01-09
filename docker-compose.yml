@@ -102,3 +102,29 @@ services:
     environment:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python ed_evaluation/evaluate.py
+
+  redis:
+    image: redis:7.2.2
+    ports:
+      - "6379:6379"
+
+  personalisation-tool:
+    image: some.registry.com/xr2learn-enablers/personalisation-tool:latest
+    working_dir: /app
+    environment:
+      - REDIS_HOST=redis
+    command: python personalisation_tool/suggest_activity_level.py
+    depends_on:
+      - redis
+
+  demo-ui:
+    image: some.registry.com/xr2learn-enablers/demo-ui:latest
+    working_dir: /app
+    environment:
+      - REDIS_HOST=redis
+    command: python web_app.py
+    depends_on:
+      - redis
+      # - personalisation-tool
+    ports:
+      - "8000:8000"
