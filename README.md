@@ -85,6 +85,15 @@ CLI `v0.1.0` is compatible with:
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
 - XR2Learn Inference `v.0.1.X`
 
+CLI `v0.2.0` is compatible with: 
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
+- XR2Learn Inference `v.0.2.X`
+
+### Changelog
+
+[CHANGELOG.md]
+
+
 ### Links:
 
 [CLI Workflow Decision Tree](https://drive.google.com/file/d/1a7m6omAY7VN22QZNpegj_fL_hcf_NEzq/view?usp=sharing)
@@ -92,3 +101,4 @@ CLI `v0.1.0` is compatible with:
 [Diagram with Architecture Overview](https://drive.google.com/file/d/1k3yLi9Y8tasFMJFNxIwKY-nRJzPdKPLw/view?usp=sharing)
 
 
+[CHANGELOG.md]: CHANGELOG.md
