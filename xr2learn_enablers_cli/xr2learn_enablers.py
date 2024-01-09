@@ -103,5 +103,9 @@ def evaluate(ctx, dataset):
     evaluation_pipeline(dataset, vars_dict)
 
 
+def run_personalisation(ctx):
+    pass
+
+
 if __name__ == '__main__':
     cli_general_options()
