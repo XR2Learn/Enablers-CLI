@@ -1,0 +1,66 @@
+{
+  "dataset_config": {
+    "dataset_name": "RAVDESS",
+    "number_of_labels": 8
+  },
+  "inference_config": {
+    "mode": "end-to-end"
+  },
+  "pre_processing_config": {
+    "process": "standardize",
+    "create_splits": true,
+    "target_sr": 16000,
+    "padding": true,
+    "max_length": 5
+  },
+  "encoder_config": {
+    "from_module": "encoders.w2v",
+    "input_type": "standardize",
+    "class_name": "Wav2Vec2CNN",
+    "kwargs": {
+    
+      "length_samples": 10,
+      "sample_rate": 16000,
+      "w2v2_type": "base",
+      "freeze": "true"
+    },
+    "pretrained_same_experiment": false
+  },
+  "sup_config": {
+    "input_type": "standardize",
+    "epochs": 50,
+    "batch_size": 16,
+    "use_augmentations_in_sup": false,
+    "kwargs": {
+      "lr": 0.001,
+      "optimizer_name": "adam",
+      "freeze_encoder": false
+    }
+  },
+  "transforms": [
+    {
+      "class_name": "ToTensor",
+      "from_module": "general_transforms",
+      "transform_name": "to_tensor",
+      "in_test": true
+    },
+    {
+      "class_name": "Permute",
+      "from_module": "general_transforms",
+      "transform_name": "permutation",
+      "in_test": true,
+      "kwargs": {
+        "shape": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "class_name": "ToFloat",
+      "from_module": "general_transforms",
+      "transform_name": "to_float",
+      "in_test": true
+    }
+  ]
+}

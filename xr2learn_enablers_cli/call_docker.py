@@ -1,7 +1,11 @@
+import logging
 import os
 import subprocess
 
+from xr2learn_enablers_cli.logger import logging_function_exit_status
 
+
+@logging_function_exit_status(logger=logging.getLogger("cli_logger"))
 def call_docker(docker_service_name, env_vars=None, gpu=False):
     """
     Function to call a docker subprocess. And wait until it is processed.
