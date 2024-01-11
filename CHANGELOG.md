@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Refactoring logging tool
 
+### Fixed 
+- Some links from README.md
+
 ## [0.2.0] - 2024 - 01 - 09
 
 ### Added
