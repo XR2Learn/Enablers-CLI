@@ -6,7 +6,8 @@ A Command Line Interface to use XR2Learn training and inference Enablers 2-6 and
 To access the Enablers' functionalities, you need two elements:
 
 1. CLI commands and options
-2. A `configuration.json` file (you can provide a JSON configuration file path as an option to the CLI command, if you do
+2. A `configuration.json` file (you can provide a JSON configuration file path as an option to the CLI command, if you
+   do
    not do that, the default file is `./configuration.json`)
 
 ### Installing
@@ -54,14 +55,21 @@ Help:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
 
+- Start Web-based DemoUI (for personalisation tool user interface)
+  `python xr2learn_enablers_cli/xr2learn_enablers.py run_demo_ui`
+
+DemoUI can be accessed by  [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
+
+- Stop Web-based DemoUI (for personalisation tool user interface)
+  `python xr2learn_enablers_cli/xr2learn_enablers.py stop_demo_ui`
+
 ### GPU
+
 To use GPU, include an option with value true `--gpu true` before the command.
 
-Example: 
-
+Example:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 --gpu true train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
-
 
 ### Pre-configured Scripts
 
@@ -69,30 +77,29 @@ Example:
 
 `./pre-configured-scripts/audio_fine_tune.sh`
 
-
-### Benchmarks 
+### Benchmarks
 
 1. Run benchmarks on Unix based OS:
-`./run_benchmarks.sh`
+   `./run_benchmarks.sh`
 
 2. Run benchmarks using GPU
-`GPU=true ./run_benchmarks.sh`
-
+   `GPU=true ./run_benchmarks.sh`
 
 ### Compatibility
 
-CLI `v0.1.0` is compatible with: 
+CLI `v0.1.0` is compatible with:
+
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
 - XR2Learn Inference `v.0.1.X`
 
-CLI `v0.2.0` is compatible with: 
+CLI `v0.2.0` is compatible with:
+
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
 - XR2Learn Inference `v.0.2.X`
 
 ### Changelog
 
 [CHANGELOG.md]
-
 
 ### Links:
 

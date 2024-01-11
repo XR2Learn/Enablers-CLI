@@ -125,6 +125,6 @@ services:
     command: python web_app.py
     depends_on:
       - redis
-      # - personalisation-tool
+      - personalisation-tool
     ports:
       - "8000:8000"

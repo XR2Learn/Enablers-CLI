@@ -4,6 +4,7 @@ import os
 
 from xr2learn_enablers_cli.predict import inference_pipeline, fusion_pipeline, evaluation_pipeline
 from xr2learn_enablers_cli.train import training_pipeline
+from xr2learn_enablers_cli.run_personalisation_tool import run_demo_ui_pipeline, stop_demo_ui_pipeline
 
 
 @click.group()
@@ -103,8 +104,18 @@ def evaluate(ctx, dataset):
     evaluation_pipeline(dataset, vars_dict)
 
 
-def run_personalisation(ctx):
+def run_personalisation():
     pass
+
+
+@cli_general_options.command()
+def run_demo_ui():
+    run_demo_ui_pipeline()
+
+
+@cli_general_options.command()
+def stop_demo_ui():
+    stop_demo_ui_pipeline()
 
 
 if __name__ == '__main__':
