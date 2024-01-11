@@ -95,6 +95,12 @@ CLI `v0.2.0` is compatible with:
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
 - XR2Learn Inference `v.0.2.X`
 
+CLI `v0.3.0` is compatible with:
+
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
+- XR2Learn Inference `v.0.2.X`
+- XR2Learn Personalisation `v.0.1.X`
+
 ### Changelog
 
 [CHANGELOG.md]
