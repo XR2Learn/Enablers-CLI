@@ -4,6 +4,7 @@ import os
 
 from xr2learn_enablers_cli.predict import inference_pipeline, fusion_pipeline, evaluation_pipeline
 from xr2learn_enablers_cli.train import training_pipeline
+from xr2learn_enablers_cli.run_personalisation_tool import run_demo_ui_pipeline, stop_demo_ui_pipeline
 
 
 @click.group()
@@ -24,16 +25,13 @@ def cli_general_options(ctx, debug, experiment_id, config_file, gpu, log_dir):
         ctx.obj['CONFIG_FILE_PATH'] = config_file
     if gpu:
         ctx.obj['GPU'] = gpu
+
     click.echo(f"Debug mode is {'on' if debug else 'off'}")
     device_running = 'GPU' if gpu else 'CPU'
     click.echo(f"Running with {device_running}\n")
     click.echo(f"Experiment ID: {experiment_id}")
-    os.makedirs(log_dir, exist_ok=True)
-    logging.basicConfig(
-        filename=os.path.join(log_dir, f'{experiment_id}.log'),
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s'
-    )
+
+    config_logging(log_dir, experiment_id)
 
 
 @cli_general_options.command()
@@ -101,6 +99,30 @@ def evaluate(ctx, dataset):
             vars_dict[key] = ctx.obj[key]
 
     evaluation_pipeline(dataset, vars_dict)
+
+
+def run_personalisation():
+    pass
+
+
+@cli_general_options.command()
+def run_demo_ui():
+    run_demo_ui_pipeline()
+
+
+@cli_general_options.command()
+def stop_demo_ui():
+    stop_demo_ui_pipeline()
+
+
+def config_logging(log_dir, experiment_id):
+    os.makedirs(log_dir, exist_ok=True)
+    log_id = experiment_id if experiment_id is not None else 'xr2learn'
+    logging.basicConfig(
+        filename=os.path.join(log_dir, f'{log_id}.log'),
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
 
 
 if __name__ == '__main__':

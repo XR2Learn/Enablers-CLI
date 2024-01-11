@@ -52,3 +52,25 @@ def prepare_env_vars(dict_vars):
         for key in dict_vars.keys():
             my_vars[key] = dict_vars[key]
     return my_vars
+
+
+@logging_function_exit_status(logger=logging.getLogger("cli_logger"))
+def up_services_demo_ui(env_vars=None):
+    print("\n.")
+    print(f"Starting Services to run DemoUI (Personalisation Tool)\n.\n")
+    docker_cmd = 'docker compose up redis personalisation-tool demo-ui -d'
+    p1 = subprocess.Popen(docker_cmd.split(' '), env=env_vars)
+    exit_code = p1.wait()
+    success = exit_code == 0
+    return success
+
+
+@logging_function_exit_status(logger=logging.getLogger("cli_logger"))
+def down_services_demo_ui():
+    print("\n.")
+    print(f"Stopping Services to run DemoUI (Personalisation Tool)\n.\n")
+    docker_cmd = 'docker compose down'
+    p1 = subprocess.Popen(docker_cmd.split(' '))
+    exit_code = p1.wait()
+    success = exit_code == 0
+    return success
