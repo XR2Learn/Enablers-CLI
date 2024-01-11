@@ -53,13 +53,13 @@ Help:
 
 - Start Web-based DemoUI (for personalisation tool user interface)
   
-`python xr2learn_enablers_cli/xr2learn_enablers.py run_demo_ui`
+`python xr2learn_enablers_cli/xr2learn_enablers.py run-demo-ui`
 
 DemoUI can be accessed by  [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
 
 - Stop Web-based DemoUI (for personalisation tool user interface)
   
-`python xr2learn_enablers_cli/xr2learn_enablers.py stop_demo_ui`
+`python xr2learn_enablers_cli/xr2learn_enablers.py stop-demo-ui`
 
 ### GPU
 
