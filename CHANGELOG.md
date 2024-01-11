@@ -7,7 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2024 - 01 - 11
+
+### Added
+
+- Integration with DemoUI for Personalisation Tool (to start and stop DemoUI for personalisation tool)
+
+### Changed
+
+- Refactoring logging tool
+
 ## [0.2.0] - 2024 - 01 - 09
+
 ### Added
 
 - Wav2vec + Linear Classifier configurations and benchmarks
@@ -64,3 +75,7 @@ Example of Categories to use in each release
 [0.1.1]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.1.1
 
 [0.1.2]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.1.2
+
+[0.2.0]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.2.0
+
+[0.3.0]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.3.0
