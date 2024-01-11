@@ -51,10 +51,6 @@ Help:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 evaluate --dataset ravdess`
 
-- Personalisation-Tool:
-
-`python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
-
 - Start Web-based DemoUI (for personalisation tool user interface)
   `python xr2learn_enablers_cli/xr2learn_enablers.py run_demo_ui`
 
