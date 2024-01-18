@@ -90,6 +90,7 @@ services:
     working_dir: /app
     environment:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+      - REDIS_HOST=redis
     command: python multimodal_fusion_layer/predict.py
 
   ed-evaluation:
