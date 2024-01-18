@@ -23,15 +23,10 @@ def evaluation_pipeline(dataset, docker_env_vars):
             pass
 
 
-def fusion_pipeline(dataset, docker_env_vars, publisher=False):
+def fusion_pipeline(dataset, docker_env_vars):
     # print(docker_env_vars)
     env_vars = prepare_env_vars(docker_env_vars)
-    publisher = env_vars
 
     if dataset in SUPPORTED_DATASETS:
         if call_docker(f'fusion-layer', env_vars=env_vars):
-            pass
-
-    if publisher:
-        if call_docker(''):
             pass

@@ -118,14 +118,6 @@ def run_demo_ui(ctx, publisher):
     vars_dict['PUBLISHER_ON'] = str(publisher)
     run_demo_ui_pipeline(vars_dict, publisher=publisher)
 
-    # if publisher:
-    #     vars_dict = {}
-    #     for key in ctx.obj.keys():
-    #         if key != 'GPU':
-    #             vars_dict[key] = ctx.obj[key]
-    #     vars_dict['PUBLISHER_ON'] = 'true'
-    #     fusion_pipeline(dataset, vars_dict, publisher=True)
-
 
 @cli_general_options.command()
 def stop_demo_ui():
