@@ -106,22 +106,25 @@ def run_personalisation():
 
 
 @cli_general_options.command()
-@click.option('--publisher', required=True, type=bool,
+@click.option('--publisher', required=False, type=bool, default=False,
               help='Indicates if Inference will act as publisher')
-@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), default='RAVDESS', required=False,
-              help='Dataset to use')
 @click.pass_context
-def run_demo_ui(ctx, publisher, dataset):
+def run_demo_ui(ctx, publisher):
     # Stopped here
-    run_demo_ui_pipeline()
-    if publisher:
-        vars_dict = {}
-        for key in ctx.obj.keys():
-            if key != 'GPU':
-                vars_dict[key] = ctx.obj[key]
-        vars_dict['PUBLISHER_ON'] = 'true'
-        print(vars_dict)
-        fusion_pipeline(dataset, vars_dict)
+    vars_dict = {}
+    for key in ctx.obj.keys():
+        if key != 'GPU':
+            vars_dict[key] = ctx.obj[key]
+    vars_dict['PUBLISHER_ON'] = str(publisher)
+    run_demo_ui_pipeline(vars_dict, publisher=publisher)
+
+    # if publisher:
+    #     vars_dict = {}
+    #     for key in ctx.obj.keys():
+    #         if key != 'GPU':
+    #             vars_dict[key] = ctx.obj[key]
+    #     vars_dict['PUBLISHER_ON'] = 'true'
+    #     fusion_pipeline(dataset, vars_dict, publisher=True)
 
 
 @cli_general_options.command()
