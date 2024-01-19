@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.4.0] - 2024 - 01 - 19
+### Added 
+- Integration with DemoUI can now call Inference as a publisher and integration with Unity App
 
 ## [0.3.0] - 2024 - 01 - 11
 
@@ -82,3 +85,5 @@ Example of Categories to use in each release
 [0.2.0]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.2.0
 
 [0.3.0]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.3.0
+
+[0.4.0]: https://github.com/um-xr2learn-enablers/XR2Learn-CLI/releases/tag/v0.4.0
