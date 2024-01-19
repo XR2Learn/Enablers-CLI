@@ -106,8 +106,17 @@ def run_personalisation():
 
 
 @cli_general_options.command()
-def run_demo_ui():
-    run_demo_ui_pipeline()
+@click.option('--publisher', required=False, type=bool, default=False,
+              help='Indicates if Inference will act as publisher')
+@click.pass_context
+def run_demo_ui(ctx, publisher):
+    # Stopped here
+    vars_dict = {}
+    for key in ctx.obj.keys():
+        if key != 'GPU':
+            vars_dict[key] = ctx.obj[key]
+    vars_dict['PUBLISHER_ON'] = str(publisher)
+    run_demo_ui_pipeline(vars_dict, publisher=publisher)
 
 
 @cli_general_options.command()
