@@ -11,6 +11,13 @@ need two elements:
    do
    not provide a JSON configuration file path, the default file is `./configuration.json`).
 
+A default configuration.json file is provided and it can be changed according to the use-case. 
+
+### Pre-requisites
+
+- Docker installed (or Nvidia-Docker for CUDA)
+- Python 3.10 installed
+
 ### Installing
 
 **Virtual Environment**
@@ -21,10 +28,6 @@ need two elements:
 
    `pip install -e .`
 
-**Dependencies**:
-
-- Docker (or Nvidia-Docker for CUDA)
-- Python 3.10
 
 ### Basic User Manual:
 
