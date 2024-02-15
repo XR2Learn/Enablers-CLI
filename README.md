@@ -117,6 +117,10 @@ CLI `v0.4.X` is compatible with:
 - XR2Learn Inference `v.0.2.X`, `v.0.3.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.0`
 
+### Changelog
+
+A description of the main changes in the project’s versions can be found at [CHANGELOG.md].
+
 ## License
 
 The CLI code is shared under a dual-licensing model. For non-commercial use, it is released under the MIT
@@ -130,15 +134,10 @@ comply with the RAVDESS license, as the models are derivative works from this da
 
 Please refer to [LICENSE.md](LICENSE.md) document for more details.
 
-### Changelog
-
-A description of the main changes in the project’s versions can be found at [CHANGELOG.md].
-
-### Links:
+## Links:
 
 [CLI Workflow Decision Tree](https://drive.google.com/file/d/1a7m6omAY7VN22QZNpegj_fL_hcf_NEzq/view?usp=sharing)
 
 [Diagram with Architecture Overview](https://drive.google.com/file/d/1k3yLi9Y8tasFMJFNxIwKY-nRJzPdKPLw/view?usp=sharing)
-
 
 [CHANGELOG.md]: CHANGELOG.md
