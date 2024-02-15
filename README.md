@@ -114,9 +114,22 @@ CLI `v0.4.0` is compatible with:
 - XR2Learn Inference `v.0.2.X`, `v.0.3.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.0`
 
+## License
+
+The CLI code is shared under a dual-licensing model. For non-commercial use, it is released under the MIT
+open-source license. A commercial license is required for commercial use.
+
+Copyright © 2024, Maastricht University
+
+Pre-trained and fine-tuned models created using the RAVDESS dataset are shared under
+the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en) license to
+comply with the RAVDESS license, as the models are derivative works from this dataset.
+
+Please refer to [LICENSE.md](LICENSE.md) document for more details.
+
 ### Changelog
 
-[CHANGELOG.md]
+A description of the main changes in the project’s versions can be found at [CHANGELOG.md].
 
 ### Links:
 
