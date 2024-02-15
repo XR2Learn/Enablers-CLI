@@ -2,13 +2,14 @@
 
 # Enablers CLI (Command Line Interface)
 
-A Command Line Interface to use XR2Learn training and inference Enablers 2-6 and their components.
-To access the Enablers' functionalities, you need two elements:
+Enablers-CLI (Command Line Interface) was designed to facilitate the use of XR2Learn training, inference and
+personalization tools, i.e., Enablers 2-6 and their components. To access the Enablers' functionalities through CLI, you
+need two elements:
 
 1. CLI commands and options
 2. A `configuration.json` file (you can provide a JSON configuration file path as an option to the CLI command, if you
    do
-   not do that, the default file is `./configuration.json`)
+   not provide a JSON configuration file path, the default file is `./configuration.json`).
 
 ### Installing
 
@@ -25,13 +26,15 @@ To access the Enablers' functionalities, you need two elements:
 - Docker (or Nvidia-Docker for CUDA)
 - Python 3.10
 
-### Usage:
+### Basic User Manual:
+
+The general command format to use XR2Learn-CLI is:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py [OPTIONS] [COMMAND] [OPTIONS]`
 
-Help:
+For help with the options and commands, access a list of arguments and their description with:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --help` for a list of arguments and their description.
+`python xr2learn_enablers_cli/xr2learn_enablers.py --help`
 
 ### Examples
 
@@ -53,9 +56,9 @@ Help:
 
 - Start Web-based DemoUI (for personalisation tool user interface)
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py run-demo-ui`
+`python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
 
-DemoUI can be accessed by  [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
+DemoUI can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
 
 - Stop Web-based DemoUI (for personalisation tool user interface)
 
@@ -72,17 +75,17 @@ form `configuration.json` for Inference as publisher.)
 
 To use GPU, include an option with value true `--gpu true` before the command.
 
-Example:
+**Example**:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 --gpu true train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
-### Pre-configured Scripts
-
-`./pre-configured-scripts/audio_pre_train.sh`
-
-`./pre-configured-scripts/audio_fine_tune.sh`
-
 ### Benchmarks
+
+XR2Learn-CLI also includes pre-configured benchmarks, which represent use cases on the enablers functionalities and
+serve as integration tests for the end-to-end system formed by CLI and Enablers 2-5.
+
+Some use cases included in the benchmarks are end-to-end system for the audio modality using different representations
+of speech, for example spectrals, paralinguistic and transformer-based features.
 
 1. Run benchmarks on Unix based OS:
    `./run_benchmarks.sh`
@@ -90,7 +93,7 @@ Example:
 2. Run benchmarks using GPU
    `GPU=true ./run_benchmarks.sh`
 
-### Compatibility
+## Compatibility
 
 CLI `v0.1.0` is compatible with:
 
@@ -108,7 +111,7 @@ CLI `v0.3.0` is compatible with:
 - XR2Learn Inference `v.0.2.X`
 - XR2Learn Personalisation `v.0.1.X`
 
-CLI `v0.4.0` is compatible with:
+CLI `v0.4.X` is compatible with:
 
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
 - XR2Learn Inference `v.0.2.X`, `v.0.3.0`
