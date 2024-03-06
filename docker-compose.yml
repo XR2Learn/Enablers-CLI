@@ -69,6 +69,61 @@ services:
       # To include environment variables in the format below
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python handcrafted_features_extraction_audio_modality/generate_features.py
+  
+  pre-processing-bm:
+    image: some.registry.com/xr2learn-enablers/pre-processing-bm:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python pre_processing_bm_modality/preprocess.py
+
+  handcrafted-features-generation-bm:
+    image: some.registry.com/xr2learn-enablers/handcrafted-features-generation-bm:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python handcrafted_features_extraction_bm_modality/generate_features.py
+
+  ssl-bm:
+    image: some.registry.com/xr2learn-enablers/ssl-bm:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python ssl_bm_modality/pre_train.py
+
+  ed-training-bm:
+    image: some.registry.com/xr2learn-enablers/ed-training-bm:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python supervised_bm_modality/train.py
+
+  ssl-features-generation-bm:
+    image: some.registry.com/xr2learn-enablers/ssl-features-generation-bm:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python ssl_features_extraction_bm_modality/generate_features.py
 
   emotion-classification-audio:
     image: some.registry.com/xr2learn-enablers/ed-classification-audio:latest
@@ -80,6 +135,17 @@ services:
     environment:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python emotion_classification_audio_modality/predict.py
+
+  emotion-classification-bm:
+    image: some.registry.com/xr2learn-enablers/ed-classification-bm:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python emotion_classification_bm_modality/predict.py
 
   fusion-layer:
     image: some.registry.com/xr2learn-enablers/fusion-layer:latest
