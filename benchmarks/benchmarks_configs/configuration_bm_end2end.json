@@ -5,7 +5,7 @@
   },
   "inference_config": {
     "features": "SSL_features",
-    "mode": "features",
+    "mode": "end-to-end",
     "publisher": false
   },
   "pre_processing_config": {
