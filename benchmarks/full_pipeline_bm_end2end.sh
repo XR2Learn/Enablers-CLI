@@ -3,9 +3,9 @@
 echo "--------------------"
 echo "FULL PIPELINE WITH BM"
 echo "--------------------"
-FILE_NAME=configuration_bm.json
+FILE_NAME=configuration_bm_end2end.json
 PATH_JSON="./benchmarks/benchmarks_configs/$FILE_NAME"
-EXPERIMENT_ID=bm_full_pipeline
+EXPERIMENT_ID=bm_full_pipeline_end2end
 
 if [ -z "$GPU" ]
 then
