@@ -1,0 +1,112 @@
+{
+  "dataset_config": {
+    "dataset_name": "BM",
+    "number_of_labels": 3
+  },
+  "inference_config": {
+    "features": "SSL_features",
+    "mode": "features",
+    "publisher": false
+  },
+  "pre_processing_config": {
+    "process": "standardize",
+    "create_splits": true,
+    "get_stats": true,
+    "get_ssl": true,
+    "use_sensors": ["gsr", "ppg"],
+    "seq_len": 5,
+    "frequency": 10,
+    "overlap": 0.0,
+    "resample_freq": 10
+  },
+  "encoder_config": {
+    "from_module": "encoders.cnn1d",
+    "input_type": "standardize",
+    "class_name": "CNN1D",
+    "kwargs": {
+      "in_channels": 2,
+      "len_seq": 50,
+      "out_channels": [
+        16,
+        32,
+        64
+      ],
+      "kernel_sizes": [
+        3,
+        3,
+        3
+      ],
+      "stride": 1
+    },
+    "pretrained_same_experiment": true
+  },
+  "ssl_config": {
+    "from_module": "ssl_methods.SimCLR",
+    "ssl_framework": "SimCLR",
+    "input_type": "standardize",
+    "save_last_encoder": false,
+    "epochs": 100,
+    "batch_size": 64,
+    "kwargs": {
+      "lr": 0.0001,
+      "n_views": 2,
+      "temperature": 0.05,
+      "optimizer_name_ssl": "adam"
+    }
+  },
+  "sup_config": {
+    "input_type": "standardize",
+    "epochs": 50,
+    "batch_size": 32,
+    "use_augmentations_in_sup": false,
+    "kwargs": {
+      "lr": 0.0001,
+      "optimizer_name": "adam",
+      "freeze_encoder": true
+    }
+  },
+  "augmentations": {
+    "gaussian_noise": {
+      "probability": 0.5,
+      "kwargs": {
+        "mean": 0,
+        "std": 0.2
+      }
+    },
+    "scale": {
+      "probability": 0.5,
+      "kwargs": {
+        "max_scale": 1.3
+      }
+    }
+  },
+
+  "transforms": [
+    {
+      "class_name": "ToTensor",
+      "from_module": "general_transforms",
+      "transform_name": "to_tensor",
+      "in_test": true
+    },
+    {
+      "class_name": "Permute",
+      "from_module": "general_transforms",
+      "transform_name": "permutation",
+      "in_test": true,
+      "kwargs": {
+        "shape": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "class_name": "ToFloat",
+      "from_module": "general_transforms",
+      "transform_name": "to_float",
+      "in_test": true
+    }
+  ]
+}
+
+

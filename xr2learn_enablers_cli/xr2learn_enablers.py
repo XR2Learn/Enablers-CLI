@@ -35,7 +35,10 @@ def cli_general_options(ctx, debug, experiment_id, config_file, gpu, log_dir):
 
 
 @cli_general_options.command()
-@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+@click.option('--dataset',
+              type=click.Choice(['RAVDESS', 'BM'], case_sensitive=False),
+              required=True,
+              help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
               help='Modality')
 @click.option('--features_type', type=click.Choice(['ssl', 'handcrafted'], case_sensitive=False), required=True,
@@ -64,7 +67,10 @@ def train(ctx, modality, ssl_pre_train, ed_training, features_type, dataset):
 
 
 @cli_general_options.command()
-@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+@click.option('--dataset',
+              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
+              required=True,
+              help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
               help='Modality')
 @click.pass_context
@@ -78,7 +84,11 @@ def predict(ctx, modality, dataset):
 
 
 @cli_general_options.command()
-@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+@click.option('--dataset',
+              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
+              required=True,
+              help='Dataset to use'
+)
 @click.pass_context
 def multimodal(ctx, dataset):
     vars_dict = {}
@@ -90,7 +100,11 @@ def multimodal(ctx, dataset):
 
 
 @cli_general_options.command()
-@click.option('--dataset', type=click.Choice(['RAVDESS'], case_sensitive=False), required=True, help='Dataset to use')
+@click.option('--dataset',
+              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
+              required=True,
+              help='Dataset to use'
+)
 @click.pass_context
 def evaluate(ctx, dataset):
     vars_dict = {}

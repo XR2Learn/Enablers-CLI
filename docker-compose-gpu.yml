@@ -30,3 +30,33 @@ services:
             - driver: nvidia
               device_ids: [ '0' ]
               capabilities: [ gpu ]
+  
+  ed-training-bm:
+    image: some.registry.com/xr2learn-enablers/ed-training-bm:latest-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]
+
+  ssl-bm:
+    image: some.registry.com/xr2learn-enablers/ssl-bm:latest-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]
+
+  ssl-features-generation-bm:
+    image: some.registry.com/xr2learn-enablers/ssl-features-generation-bm:latest-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]

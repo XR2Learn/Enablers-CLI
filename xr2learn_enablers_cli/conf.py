@@ -1,2 +1,4 @@
 SUPPORTED_DATASETS = {
-    'RAVDESS': 'audio'}
+    'RAVDESS': 'audio',
+    'BM': 'bm'
+}
