@@ -154,7 +154,7 @@ Please refer to [LICENSE.md](LICENSE.md) document for more details.
 
 ## Links:
 
-[CLI Workflow Decision Tree](https://drive.google.com/file/d/1a7m6omAY7VN22QZNpegj_fL_hcf_NEzq/view?usp=sharing)
+[CLI Workflow Decision Tree](/images/CLI_workflow_decision_Tree_v2.png)
 
 [Diagram with Architecture Overview](/images/CLI-Enablers-orverview-DemoUI.png)
 
