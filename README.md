@@ -120,16 +120,31 @@ CLI `v0.4.X` is compatible with:
 - XR2Learn Inference `v.0.2.X`, `v.0.3.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.0`
 
+CLI `v0.5.0` is compatible with:
+
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`
+- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`
+- XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
+
 ### Changelog
 
 A description of the main changes in the project’s versions can be found at [CHANGELOG.md].
 
 ## License
 
-The CLI code is shared under a dual-licensing model. For non-commercial use, it is released under the MIT
-open-source license. A commercial license is required for commercial use.
-
 Copyright © 2024, Maastricht University
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 Pre-trained and fine-tuned models created using the RAVDESS dataset are shared under
 the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en) license to
@@ -141,6 +156,6 @@ Please refer to [LICENSE.md](LICENSE.md) document for more details.
 
 [CLI Workflow Decision Tree](https://drive.google.com/file/d/1a7m6omAY7VN22QZNpegj_fL_hcf_NEzq/view?usp=sharing)
 
-[Diagram with Architecture Overview](https://drive.google.com/file/d/1k3yLi9Y8tasFMJFNxIwKY-nRJzPdKPLw/view?usp=sharing)
+[Diagram with Architecture Overview](/images/CLI-Enablers-orverview-DemoUI.png)
 
 [CHANGELOG.md]: CHANGELOG.md
