@@ -1,6 +1,7 @@
 {
   "dataset_config": {
-    "dataset_name": "BM",
+    "dataset_name": "XRoom",
+    "modality": "shimmer",
     "number_of_labels": 3
   },
   "inference_config": {
