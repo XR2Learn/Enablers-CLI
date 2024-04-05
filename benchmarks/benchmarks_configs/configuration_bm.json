@@ -5,7 +5,7 @@
     "number_of_labels": 3
   },
   "inference_config": {
-    "features": "SSL_features",
+    "features": "ssl_features",
     "mode": "features",
     "publisher": false
   },

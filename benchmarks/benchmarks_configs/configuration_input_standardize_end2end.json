@@ -1,6 +1,7 @@
 {
   "dataset_config": {
     "dataset_name": "RAVDESS",
+    "modality": "audio",
     "number_of_labels": 8
   },
   "inference_config": {

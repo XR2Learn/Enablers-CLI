@@ -1,6 +1,7 @@
 {
   "dataset_config": {
     "dataset_name": "RAVDESS",
+    "modality": "audio",
     "number_of_labels": 8
   },
   "pre_processing_config": {
@@ -11,7 +12,7 @@
     "max_length": 5
   },
   "inference_config": {
-    "features": "SSL_features",
+    "features": "ssl_features",
     "mode": "features"
   },
   "handcrafted_features_config": {
@@ -30,23 +31,12 @@
     }
   },
   "encoder_config": {
-    "from_module": "encoders.cnn1d",
-    "class_name": "CNN1D",
+    "from_module": "encoders.mlp",
+    "class_name": "LinearEncoder",
     "input_type": "eGeMAPs",
     "kwargs": {
-      "in_channels": 1,
-      "len_seq": 88,
-      "out_channels": [
-        2,
-        2,
-        2
-      ],
-      "kernel_sizes": [
-        3,
-        3,
-        3
-      ],
-      "stride": 2
+      "in_size": 88,
+      "out_size": 128
     },
     "pretrained_same_experiment": true
   },
