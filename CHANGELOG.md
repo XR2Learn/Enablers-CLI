@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.5.1] - 2024 - 04 - 10
 ## Added 
 - Support for new output format of Training and Inference Tools.
 
@@ -95,7 +96,7 @@ Example of Categories to use in each release
 - Just an example of how to use changelog. -->
 
 
-[unreleased]: https://github.com/XR2Learn/Enablers-CLI/compare/v0.5.0...master
+[unreleased]: https://github.com/XR2Learn/Enablers-CLI/compare/v0.5.1...master
 
 [0.1.0]: https://github.com/XR2Learn/Enablers-CLI/releases/tag/v0.1.0
 
@@ -112,3 +113,5 @@ Example of Categories to use in each release
 [0.4.1]: https://github.com/XR2Learn/Enablers-CLI/releases/tag/v0.4.1
 
 [0.5.0]: https://github.com/XR2Learn/Enablers-CLI/releases/tag/v0.5.0
+
+[0.5.1]: https://github.com/XR2Learn/Enablers-CLI/releases/tag/v0.5.1
