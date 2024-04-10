@@ -1,17 +1,21 @@
-![XR2Learn](https://raw.githubusercontent.com/XR2Learn/.github/5c0fada6136915b389c1cd2151a0dd2cfc4a5aac/images/XR2Learn%20logo.png)
+# [XR2Learn Emotion Recognition]  Command Line Interface (CLI)
 
-# Enablers CLI (Command Line Interface)
+Command-line interface (CLI) is an automated interface that facilitates access to the XR2Learn Emotion Recognition
+training, inference and
+personalization Tools' functionalities. It
+allows users to quickly and easily access the XR2Learn Emotion Recognition
+Tools' use cases. CLI includes simplified installation and commands,
+pre-configured scripts for common use cases, and benchmarks to evaluate the end-to-end workings of the whole pipeline,
+working as an integration test for the system.
 
-Enablers-CLI (Command Line Interface) was designed to facilitate the use of XR2Learn training, inference and
-personalization tools, i.e., Enablers 2-6 and their components. To access the Enablers' functionalities through CLI, you
-need two elements:
+To run CLI, you need two elements:
 
 1. CLI commands and options
 2. A `configuration.json` file (you can provide a JSON configuration file path as an option to the CLI command, if you
    do
    not provide a JSON configuration file path, the default file is `./configuration.json`).
 
-A default configuration.json file is provided and it can be changed according to the use-case. 
+A default configuration.json file is provided and it can be changed according to the use-case.
 
 ### Pre-requisites
 
@@ -27,7 +31,6 @@ A default configuration.json file is provided and it can be changed according to
 3. Install XR2Learn-CLI
 
    `pip install -e .`
-
 
 ### Basic User Manual:
 
@@ -120,10 +123,10 @@ CLI `v0.4.X` is compatible with:
 - XR2Learn Inference `v.0.2.X`, `v.0.3.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.0`
 
-CLI `v0.5.0` is compatible with:
+CLI `v0.5.X` is compatible with:
 
-- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`
-- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
+- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
 
 ### Changelog
