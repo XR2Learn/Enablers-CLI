@@ -1,10 +1,11 @@
-import click
 import logging
 import os
 
+import click
+
 from xr2learn_enablers_cli.predict import inference_pipeline, fusion_pipeline, evaluation_pipeline
-from xr2learn_enablers_cli.train import training_pipeline
 from xr2learn_enablers_cli.run_personalisation_tool import run_demo_ui_pipeline, stop_demo_ui_pipeline
+from xr2learn_enablers_cli.train import training_pipeline
 
 
 @click.group()
@@ -88,7 +89,7 @@ def predict(ctx, modality, dataset):
               type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
               required=True,
               help='Dataset to use'
-)
+              )
 @click.pass_context
 def multimodal(ctx, dataset):
     vars_dict = {}
@@ -104,7 +105,7 @@ def multimodal(ctx, dataset):
               type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
               required=True,
               help='Dataset to use'
-)
+              )
 @click.pass_context
 def evaluate(ctx, dataset):
     vars_dict = {}
@@ -122,15 +123,20 @@ def run_personalisation():
 @cli_general_options.command()
 @click.option('--publisher', required=False, type=bool, default=False,
               help='Indicates if Inference will act as publisher')
+@click.option('--modality',
+                    type=click.Choice(['audio', 'bm', 'body-tracking'],
+                    case_sensitive=False),
+              required=False,
+              help='Modality')
 @click.pass_context
-def run_demo_ui(ctx, publisher):
+def run_demo_ui(ctx, publisher, modality):
     # Stopped here
     vars_dict = {}
     for key in ctx.obj.keys():
         if key != 'GPU':
             vars_dict[key] = ctx.obj[key]
     vars_dict['PUBLISHER_ON'] = str(publisher)
-    run_demo_ui_pipeline(vars_dict, publisher=publisher)
+    run_demo_ui_pipeline(vars_dict, publisher=publisher, modality=modality)
 
 
 @cli_general_options.command()
