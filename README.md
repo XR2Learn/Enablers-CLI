@@ -1,10 +1,9 @@
-# [XR2Learn Emotion Recognition]  Command Line Interface (CLI)
+# [XR2Learn Personalization Enablers]  Command Line Interface (CLI)
 
-Command-line interface (CLI) is an automated interface that facilitates access to the XR2Learn Emotion Recognition
+Command-line interface (CLI) is an automated interface that facilitates access to the XR2Learn Personalization Enablers
 training, inference and
 personalization Tools' functionalities. It
-allows users to quickly and easily access the XR2Learn Emotion Recognition
-Tools' use cases. CLI includes simplified installation and commands,
+allows users to quickly and easily access the XR2Learn Personalization Enablers use cases. CLI includes simplified installation and commands,
 pre-configured scripts for common use cases, and benchmarks to evaluate the end-to-end workings of the whole pipeline,
 working as an integration test for the system.
 

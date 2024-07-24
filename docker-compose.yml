@@ -145,6 +145,7 @@ services:
     working_dir: /app
     environment:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+      - REDIS_HOST=redis
     command: python emotion_classification_bm_modality/predict.py
 
   fusion-layer:
