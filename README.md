@@ -128,6 +128,11 @@ CLI `v0.5.X` is compatible with:
 - XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
 
+CLI `v0.6.0` is compatible with:
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
+- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`, `v0.6.0`
+- XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
+
 ### Changelog
 
 A description of the main changes in the project’s versions can be found at [CHANGELOG.md].
