@@ -137,6 +137,8 @@ CLI `v0.6.0` is compatible with:
 
 A description of the main changes in the project’s versions can be found at [CHANGELOG.md].
 
+To check which is your current version, go to the file [setup.cfg](setup.cfg).
+
 ## License
 
 Copyright © 2024, Maastricht University
