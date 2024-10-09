@@ -156,6 +156,20 @@ services:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python supervised_body_tracking_modality/train.py
 
+  emotion-classification-body-tracking:
+    image: some.registry.com/xr2learn-enablers/emotion-classification-body-tracking:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+      - REDIS_HOST=redis
+    command: python emotion_classification_body_tracking_modality/predict.py
+    depends_on:
+      - redis
+
   fusion-layer:
     image: some.registry.com/xr2learn-enablers/fusion-layer:latest
     volumes:
@@ -169,7 +183,7 @@ services:
       - REDIS_HOST=redis
     command: python multimodal_fusion_layer/predict.py
 
-  personalization-too:
+  personalization-tool:
     image: some.registry.com/xr2learn-enablers/personalization-tool:latest
     working_dir: /app
     environment:
