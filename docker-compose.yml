@@ -1,26 +1,33 @@
-version: '3'
 services:
-  ed-training-audio:
-    image: some.registry.com/xr2learn-enablers/ed-training-audio:latest
-    volumes:
-      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
-      - "./outputs:/app/outputs"
-      - "./datasets:/app/datasets"
-    working_dir: /app
-    environment:
-      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-    command: python supervised_audio_modality/train.py
+  redis:
+    image: redis:7.2.2
+    ports:
+      - "6379:6379"
 
-  ed-training-body-tracking:
-    image: some.registry.com/xr2learn-enablers/ed-training-body-tracking:latest
+  ########## AUDIO MODALITY SERVICES
+  pre-processing-audio:
+    image: some.registry.com/xr2learn-enablers/pre-processing-audio:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
       - "./datasets:/app/datasets"
     working_dir: /app
     environment:
+      # To include environment variables in the format below
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-    command: python supervised_body_tracking_modality/train.py
+    command: python pre_processing_audio_modality/preprocess.py
+
+  handcrafted-features-generation-audio:
+    image: some.registry.com/xr2learn-enablers/handcrafted-features-generation-audio:latest
+    volumes:
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      # To include environment variables in the format below
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python handcrafted_features_extraction_audio_modality/generate_features.py
 
   ssl-audio:
     image: some.registry.com/xr2learn-enablers/ssl-audio:latest
@@ -34,18 +41,6 @@ services:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python ssl_audio_modality/pre_train.py
 
-  pre-processing-audio:
-    image: some.registry.com/xr2learn-enablers/pre-processing-audio:latest
-    volumes:
-      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
-      - "./outputs:/app/outputs"
-      - "./datasets:/app/datasets"
-    working_dir: /app
-    environment:
-      # To include environment variables in the format below
-      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-    command: python pre_processing_audio_modality/preprocess.py
-
   ssl-features-generation-audio:
     image: some.registry.com/xr2learn-enablers/ssl-features-generation-audio:latest
     volumes:
@@ -58,18 +53,30 @@ services:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python ssl_features_extraction_audio_modality/generate_features.py
 
-  handcrafted-features-generation-audio:
-    image: some.registry.com/xr2learn-enablers/handcrafted-features-generation-audio:latest
+  ed-training-audio:
+    image: some.registry.com/xr2learn-enablers/ed-training-audio:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
       - "./datasets:/app/datasets"
     working_dir: /app
     environment:
-      # To include environment variables in the format below
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-    command: python handcrafted_features_extraction_audio_modality/generate_features.py
-  
+    command: python supervised_audio_modality/train.py
+
+  emotion-classification-audio:
+    image: some.registry.com/xr2learn-enablers/ed-classification-audio:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python emotion_classification_audio_modality/predict.py
+
+
+  ########## BIO-MEASUREMENTS (BM) MODALITY SERVICES
   pre-processing-bm:
     image: some.registry.com/xr2learn-enablers/pre-processing-bm:latest
     volumes:
@@ -103,17 +110,6 @@ services:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python ssl_bm_modality/pre_train.py
 
-  ed-training-bm:
-    image: some.registry.com/xr2learn-enablers/ed-training-bm:latest
-    volumes:
-      - "./datasets:/app/datasets"
-      - "./outputs:/app/outputs"
-      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
-    working_dir: /app
-    environment:
-      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-    command: python supervised_bm_modality/train.py
-
   ssl-features-generation-bm:
     image: some.registry.com/xr2learn-enablers/ssl-features-generation-bm:latest
     volumes:
@@ -125,8 +121,8 @@ services:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
     command: python ssl_features_extraction_bm_modality/generate_features.py
 
-  emotion-classification-audio:
-    image: some.registry.com/xr2learn-enablers/ed-classification-audio:latest
+  ed-training-bm:
+    image: some.registry.com/xr2learn-enablers/ed-training-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -134,7 +130,7 @@ services:
     working_dir: /app
     environment:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-    command: python emotion_classification_audio_modality/predict.py
+    command: python supervised_bm_modality/train.py
 
   emotion-classification-bm:
     image: some.registry.com/xr2learn-enablers/ed-classification-bm:latest
@@ -147,6 +143,18 @@ services:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
       - REDIS_HOST=redis
     command: python emotion_classification_bm_modality/predict.py
+
+########## BODY TRACKING MODALITY SERVICES
+  ed-training-body-tracking:
+    image: some.registry.com/xr2learn-enablers/ed-training-body-tracking:latest
+    volumes:
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+      - "./outputs:/app/outputs"
+      - "./datasets:/app/datasets"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python supervised_body_tracking_modality/train.py
 
   fusion-layer:
     image: some.registry.com/xr2learn-enablers/fusion-layer:latest
@@ -161,39 +169,23 @@ services:
       - REDIS_HOST=redis
     command: python multimodal_fusion_layer/predict.py
 
-  ed-evaluation:
-    image: some.registry.com/xr2learn-enablers/ed-evaluation:latest
-    volumes:
-      - "./datasets:/app/datasets"
-      - "./outputs:/app/outputs"
-      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
-    working_dir: /app
-    environment:
-      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-    command: python ed_evaluation/evaluate.py
-
-  redis:
-    image: redis:7.2.2
-    ports:
-      - "6379:6379"
-
-  personalisation-tool:
-    image: some.registry.com/xr2learn-enablers/personalisation-tool:latest
+  personalization-too:
+    image: some.registry.com/xr2learn-enablers/personalization-tool:latest
     working_dir: /app
     environment:
       - REDIS_HOST=redis
-    command: python personalisation_tool/suggest_activity_level.py
+    command: python personalization_tool/suggest_activity_level.py
     depends_on:
       - redis
 
-  demo-ui:
-    image: some.registry.com/xr2learn-enablers/demo-ui:latest
+  dashboard:
+    image: some.registry.com/xr2learn-enablers/dashboard:latest
     working_dir: /app
     environment:
       - REDIS_HOST=redis
     command: python web_app.py
     depends_on:
       - redis
-      - personalisation-tool
+      - personalization-tool
     ports:
       - "8000:8000"
