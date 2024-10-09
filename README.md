@@ -71,7 +71,7 @@ DemoUI can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0
 
 To run with Inference as publisher set option `--publisher true` when `running the run-demo-ui` command:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py run-demo-ui --publisher true`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --publisher true --modality bm`
 
 (**Note**: Inference as publisher is set as `false` by default and this option overwrites the configuration
 form `configuration.json` for Inference as publisher.)
