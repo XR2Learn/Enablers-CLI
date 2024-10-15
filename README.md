@@ -55,17 +55,14 @@ For help with the options and commands, access a list of arguments and their des
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 multimodal --dataset ravdess`
 
-- Inference (Evaluation):
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 evaluate --dataset ravdess`
-
-- Start Web-based DemoUI (for personalisation tool user interface)
+- Start Web-based Dashboard (for personalization tool user interface)
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
 
-DemoUI can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
+Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
 
-- Stop Web-based DemoUI (for personalisation tool user interface)
+- Stop Web-based Dashboard (for personalisation tool user interface)
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py stop-demo-ui`
 

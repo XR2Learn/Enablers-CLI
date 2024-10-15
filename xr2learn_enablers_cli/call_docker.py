@@ -58,7 +58,7 @@ def prepare_env_vars(dict_vars):
 def up_services_demo_ui(env_vars=None, publisher=False, modality='bm'):
     env_vars = prepare_env_vars(env_vars)
     print("\n.")
-    print(f"Starting Services to run DemoUI (Personalization Tool)\n.\n")
+    print(f"Starting Services to run Dashboard (Personalization Tool)\n.\n")
     docker_cmd = 'docker compose up redis personalization-tool dashboard -d'
     if publisher:
         docker_cmd = f'docker compose up redis personalization-tool dashboard emotion-classification-{modality} fusion-layer -d'
