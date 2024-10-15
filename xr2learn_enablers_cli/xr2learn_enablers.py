@@ -37,7 +37,7 @@ def cli_general_options(ctx, debug, experiment_id, config_file, gpu, log_dir):
 
 @cli_general_options.command()
 @click.option('--dataset',
-              type=click.Choice(['RAVDESS', 'BM'], case_sensitive=False),
+              type=click.Choice(['RAVDESS', 'XRoom'], case_sensitive=False),
               required=True,
               help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
@@ -69,7 +69,7 @@ def train(ctx, modality, ssl_pre_train, ed_training, features_type, dataset):
 
 @cli_general_options.command()
 @click.option('--dataset',
-              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
+              type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
               required=True,
               help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
@@ -86,7 +86,7 @@ def predict(ctx, modality, dataset):
 
 @cli_general_options.command()
 @click.option('--dataset',
-              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
+              type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
               required=True,
               help='Dataset to use'
               )
@@ -100,20 +100,20 @@ def multimodal(ctx, dataset):
     fusion_pipeline(dataset, vars_dict)
 
 
-@cli_general_options.command()
-@click.option('--dataset',
-              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
-              required=True,
-              help='Dataset to use'
-              )
-@click.pass_context
-def evaluate(ctx, dataset):
-    vars_dict = {}
-    for key in ctx.obj.keys():
-        if key != 'GPU':
-            vars_dict[key] = ctx.obj[key]
-
-    evaluation_pipeline(dataset, vars_dict)
+# @cli_general_options.command()
+# @click.option('--dataset',
+#               type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
+#               required=True,
+#               help='Dataset to use'
+#               )
+# @click.pass_context
+# def evaluate(ctx, dataset):
+#     vars_dict = {}
+#     for key in ctx.obj.keys():
+#         if key != 'GPU':
+#             vars_dict[key] = ctx.obj[key]
+#
+#     evaluation_pipeline(dataset, vars_dict)
 
 
 def run_personalisation():
