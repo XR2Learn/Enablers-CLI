@@ -58,7 +58,16 @@ For help with the options and commands, access a list of arguments and their des
 
 - Start Web-based Dashboard (for personalization tool user interface)
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
+#### Uni modal:
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm`
+
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality body-tracking`
+
+#### Multi modalities:
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm --modality body-tracking`
 
 Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
 
@@ -66,18 +75,6 @@ Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://12
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py stop-demo-ui`
 
-To run with Inference as publisher set option `--publisher true` when `running the run-demo-ui` command:
-
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm`
-
-
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality body-tracking`
-
-
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm --modality body-tracking`
-
-(**Note**: Inference as publisher is set as `false` by default and this option overwrites the configuration
-form `configuration.json` for Inference as publisher.)
 
 ### GPU
 
