@@ -55,18 +55,23 @@ def prepare_env_vars(dict_vars):
 
 
 @logging_function_exit_status(logger=logging.getLogger("cli_logger"))
-def up_services_demo_ui(env_vars=None, publisher=True, modality='bm'):
+def up_services_dashboard(env_vars=None):
     env_vars = prepare_env_vars(env_vars)
     print("\n.")
     print(f"Starting Services to run Dashboard (Personalization Tool)\n.\n")
-    # docker_cmd = 'docker compose up redis personalization-tool dashboard -d'
-    # if publisher:
-    docker_cmd = f'docker compose up redis personalization-tool dashboard emotion-classification-{modality} fusion-layer -d'
+    docker_cmd = f'docker compose up redis personalization-tool dashboard fusion-layer -d'
     p1 = subprocess.Popen(docker_cmd.split(' '), env=env_vars)
     exit_code = p1.wait()
     success = exit_code == 0
     return success
 
+def up_service_emotion_classification_modality(env_vars, modality):
+    env_vars = prepare_env_vars(env_vars)
+    docker_cmd = f'docker compose up emotion-classification-{modality} -d'
+    p1 = subprocess.Popen(docker_cmd.split(' '), env=env_vars)
+    exit_code = p1.wait()
+    success = exit_code == 0
+    return success
 
 @logging_function_exit_status(logger=logging.getLogger("cli_logger"))
 def down_services_demo_ui():

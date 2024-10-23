@@ -68,13 +68,13 @@ Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://12
 
 To run with Inference as publisher set option `--publisher true` when `running the run-demo-ui` command:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --publisher true --modality bm`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm`
 
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --publisher true --modality body-tracking`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality body-tracking`
 
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --publisher true --modality bm --modality body-tracking`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm --modality body-tracking`
 
 (**Note**: Inference as publisher is set as `false` by default and this option overwrites the configuration
 form `configuration.json` for Inference as publisher.)

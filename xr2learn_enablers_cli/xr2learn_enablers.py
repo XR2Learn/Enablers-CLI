@@ -101,25 +101,22 @@ def multimodal(ctx, dataset):
 
 
 @cli_general_options.command()
-@click.option('--publisher', required=False, type=bool, default=True,
-              help='Indicates if Inference will act as publisher')
 @click.option('--modality', '-m', multiple=True,
               type=click.Choice(['audio', 'bm', 'body-tracking'],
                                 case_sensitive=False),
               required=False,
               help='Modality')
 @click.pass_context
-def run_demo_ui(ctx, publisher, modality):
+def run_demo_ui(ctx, modality):
     # Stopped here
     vars_dict = {}
     for key in ctx.obj.keys():
         if key != 'GPU':
             vars_dict[key] = ctx.obj[key]
-    vars_dict['PUBLISHER_ON'] = str(publisher)
 
     # modality is the type tuple
-    # TODO change to read the modalities from tuple type.
-    run_demo_ui_pipeline(vars_dict, publisher=publisher, modality=modality)
+    modality = list(modality)
+    run_demo_ui_pipeline(vars_dict, modality_list=modality)
 
 
 @cli_general_options.command()
