@@ -70,6 +70,9 @@ To run with Inference as publisher set option `--publisher true` when `running t
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --publisher true --modality bm`
 
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --publisher true --modality body-tracking`
+
 (**Note**: Inference as publisher is set as `false` by default and this option overwrites the configuration
 form `configuration.json` for Inference as publisher.)
 
