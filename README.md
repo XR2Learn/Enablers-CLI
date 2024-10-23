@@ -3,7 +3,8 @@
 Command-line interface (CLI) is an automated interface that facilitates access to the XR2Learn Personalization Enablers
 training, inference and
 personalization Tools' functionalities. It
-allows users to quickly and easily access the XR2Learn Personalization Enablers use cases. CLI includes simplified installation and commands,
+allows users to quickly and easily access the XR2Learn Personalization Enablers use cases. CLI includes simplified
+installation and commands,
 pre-configured scripts for common use cases, and benchmarks to evaluate the end-to-end workings of the whole pipeline,
 working as an integration test for the system.
 
@@ -14,7 +15,7 @@ To run CLI, you need two elements:
    do
    not provide a JSON configuration file path, the default file is `./configuration.json`).
 
-A default configuration.json file is provided and it can be changed according to the use-case.
+A default configuration.json file is provided, and it can be changed according to the use-case.
 
 ### Pre-requisites
 
@@ -55,26 +56,26 @@ For help with the options and commands, access a list of arguments and their des
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 multimodal --dataset ravdess`
 
-
 - Start Web-based Dashboard (for personalization tool user interface)
 
 #### Uni modal:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm`
 
-
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality body-tracking`
+
+Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
 
 #### Multi modalities:
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm --modality body-tracking`
 
-Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
+**Note**: To run Dashboard for one modality or multiple modalities, the command and the configuration must match, i.e.,
+if you run the dashboard command with one modality, the `configuration.json` file must reflect the same modality.
 
 - Stop Web-based Dashboard (for personalisation tool user interface)
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py stop-demo-ui`
-
 
 ### GPU
 
@@ -129,6 +130,7 @@ CLI `v0.5.X` is compatible with:
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
 
 CLI `v0.6.0` is compatible with:
+
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
 - XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`, `v0.6.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
