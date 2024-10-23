@@ -179,7 +179,7 @@ services:
     working_dir: /app
     environment:
       - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
-      - PUBLISHER_ON=${PUBLISHER_ON:-false}
+      - PUBLISHER_ON=${PUBLISHER_ON:-true}
       - REDIS_HOST=redis
     command: python multimodal_fusion_layer/predict.py
 
@@ -203,3 +203,43 @@ services:
       - personalization-tool
     ports:
       - "8000:8000"
+
+
+### Testing - to remove later
+  mock-xroom-writer:
+    image: some.registry.com/xr2learn-enablers/mock-xroom-writer:latest
+    volumes:
+      - "./datasets/:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    command: python mock_xroom_writer_bm_bt_modality/mock_xroom_writer.py
+
+
+  inference-data-processing-bm:
+    image: some.registry.com/xr2learn-enablers/inference-data-processing-bm:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+      - REDIS_HOST=redis
+    command: python inference_data_processing_bm_modality/process_data.py
+    depends_on:
+      - redis
+
+  inference-data-processing-body-tracking:
+    image: some.registry.com/xr2learn-enablers/inference-data-processing-body-tracking:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+      - REDIS_HOST=redis
+    command: python inference_data_processing_body_tracking_modality/process_data.py
+    depends_on:
+      - redis
