@@ -100,32 +100,12 @@ def multimodal(ctx, dataset):
     fusion_pipeline(dataset, vars_dict)
 
 
-# @cli_general_options.command()
-# @click.option('--dataset',
-#               type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
-#               required=True,
-#               help='Dataset to use'
-#               )
-# @click.pass_context
-# def evaluate(ctx, dataset):
-#     vars_dict = {}
-#     for key in ctx.obj.keys():
-#         if key != 'GPU':
-#             vars_dict[key] = ctx.obj[key]
-#
-#     evaluation_pipeline(dataset, vars_dict)
-
-
-def run_personalisation():
-    pass
-
-
 @cli_general_options.command()
-@click.option('--publisher', required=False, type=bool, default=False,
+@click.option('--publisher', required=False, type=bool, default=True,
               help='Indicates if Inference will act as publisher')
-@click.option('--modality',
-                    type=click.Choice(['audio', 'bm', 'body-tracking'],
-                    case_sensitive=False),
+@click.option('--modality', '-m', multiple=True,
+              type=click.Choice(['audio', 'bm', 'body-tracking'],
+                                case_sensitive=False),
               required=False,
               help='Modality')
 @click.pass_context
@@ -136,6 +116,9 @@ def run_demo_ui(ctx, publisher, modality):
         if key != 'GPU':
             vars_dict[key] = ctx.obj[key]
     vars_dict['PUBLISHER_ON'] = str(publisher)
+
+    # modality is the type tuple
+    # TODO change to read the modalities from tuple type.
     run_demo_ui_pipeline(vars_dict, publisher=publisher, modality=modality)
 
 
