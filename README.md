@@ -70,7 +70,7 @@ Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://12
 
 `python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-dashboard --modality bm --modality body-tracking`
 
-**Note**: To run Dashboard for one modality or multiple modalities, the command and the configuration must match, i.e.,
+**Note**: To run Dashboard for one modality or multiqple modalities, the command and the configuration must match, i.e.,
 if you run the dashboard command with one modality, the `configuration.json` file must reflect the same modality.
 
 - Stop Web-based Dashboard (for personalisation tool user interface)
@@ -134,6 +134,13 @@ CLI `v0.6.0` is compatible with:
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
 - XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`, `v0.6.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
+
+CLI `v1.0.0` is compatible with:
+
+- XR2Learn Training `v.1.0.0`
+- XR2Learn Inference `v.1.0.0`
+- XR2Learn Personalisation `v.1.0.0`
+- Magic XRoom (data format) `v.1.0`, `v.1.2`
 
 ### Changelog
 
