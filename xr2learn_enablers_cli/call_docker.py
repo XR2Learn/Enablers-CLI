@@ -74,7 +74,7 @@ def up_service_emotion_classification_modality(env_vars, modality):
     return success
 
 @logging_function_exit_status(logger=logging.getLogger("cli_logger"))
-def down_services_demo_ui():
+def down_services_dashboard():
     print("\n.")
     print(f"Stopping Services to run DemoUI (Personalisation Tool)\n.\n")
     docker_cmd = 'docker compose down'

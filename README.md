@@ -60,22 +60,22 @@ For help with the options and commands, access a list of arguments and their des
 
 #### Uni modal:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-dashboard --modality bm`
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality body-tracking`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-dashboard --modality body-tracking`
 
 Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
 
 #### Multi modalities:
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --modality bm --modality body-tracking`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-dashboard --modality bm --modality body-tracking`
 
 **Note**: To run Dashboard for one modality or multiple modalities, the command and the configuration must match, i.e.,
 if you run the dashboard command with one modality, the `configuration.json` file must reflect the same modality.
 
 - Stop Web-based Dashboard (for personalisation tool user interface)
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py stop-demo-ui`
+`python xr2learn_enablers_cli/xr2learn_enablers.py stop-dashboard`
 
 ### GPU
 

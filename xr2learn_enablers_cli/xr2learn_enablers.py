@@ -4,7 +4,7 @@ import os
 import click
 
 from xr2learn_enablers_cli.predict import inference_pipeline, fusion_pipeline, evaluation_pipeline
-from xr2learn_enablers_cli.run_personalisation_tool import run_demo_ui_pipeline, stop_demo_ui_pipeline
+from xr2learn_enablers_cli.run_personalisation_tool import run_dashboard_pipeline, stop_demo_ui_pipeline
 from xr2learn_enablers_cli.train import training_pipeline
 
 
@@ -107,7 +107,7 @@ def multimodal(ctx, dataset):
               required=False,
               help='Modality')
 @click.pass_context
-def run_demo_ui(ctx, modality):
+def run_dashboard(ctx, modality):
     # Stopped here
     vars_dict = {}
     for key in ctx.obj.keys():
@@ -116,11 +116,11 @@ def run_demo_ui(ctx, modality):
 
     # modality is the type tuple
     modality = list(modality)
-    run_demo_ui_pipeline(vars_dict, modality_list=modality)
+    run_dashboard_pipeline(vars_dict, modality_list=modality)
 
 
 @cli_general_options.command()
-def stop_demo_ui():
+def stop_dashboard():
     stop_demo_ui_pipeline()
 
 
