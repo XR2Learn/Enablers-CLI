@@ -3,11 +3,4 @@
 
 sudo rm -R outputs/XRoom/shimmer
 
-./benchmarks/full_pipeline_bm.sh
-./benchmarks/predict_bm.sh
-./benchmarks/multimodal_bm.sh
-
-#sudo rm -R outputs/XRoom
-./benchmarks/full_pipeline_bm_end2end.sh
-./benchmarks/predict_bm_end2end.sh
-./benchmarks/multimodal_bm_end2end.sh
+./benchmarks/train_pipeline_bm.sh

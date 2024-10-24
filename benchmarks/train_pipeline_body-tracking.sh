@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "--------------------"
-echo "FULL PIPELINE WITH BM"
+echo "TRAIN PIPELINE WITH BODY TRACKING"
 echo "--------------------"
 FILE_NAME=configuration_bm.json
 PATH_JSON="./benchmarks/benchmarks_configs/$FILE_NAME"
-EXPERIMENT_ID=bm_full_pipeline
+EXPERIMENT_ID=bm_train_pipeline
 
 if [ -z "$GPU" ]
 then

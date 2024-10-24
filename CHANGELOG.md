@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- support for multimodality for XRoom dataset (body tracking + bio-measurements) modalities.
+
 ### Changed 
-- update on services names
+- update services names
+- config format to match the new versions of Training/Inference tools. 
+- Refactoring
 
 ### Removed
 - Evaluation services - since it has been removed from Inference Tools. 
+- Non-applicable benchmarks (according to the current repositories versions - check version compatibility on README)
 
 ## [0.6.0] - 2024 - 07 - 25
 ### Added
