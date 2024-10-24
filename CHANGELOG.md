@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- support for `body-tracking` modality
 - support for multimodality for XRoom dataset (body tracking + bio-measurements) modalities.
 
 ### Changed 
