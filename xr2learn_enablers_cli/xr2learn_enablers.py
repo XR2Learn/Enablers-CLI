@@ -42,7 +42,7 @@ def cli_general_options(ctx, debug, experiment_id, config_file, gpu, log_dir):
               help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
               help='Modality')
-@click.option('--features_type', type=click.Choice(['ssl', 'handcrafted'], case_sensitive=False), required=True,
+@click.option('--features_type', type=click.Choice(['ssl', 'handcrafted', 'none'], case_sensitive=False), required=True,
               help='Type of Features')
 @click.option('--ssl_pre_train',
               type=click.Choice(['encoder_fe', 'encoder_only', 'fe_only', 'none'], case_sensitive=False),
@@ -84,20 +84,20 @@ def predict(ctx, modality, dataset):
     inference_pipeline(modality, dataset, vars_dict)
 
 
-@cli_general_options.command()
-@click.option('--dataset',
-              type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
-              required=True,
-              help='Dataset to use'
-              )
-@click.pass_context
-def multimodal(ctx, dataset):
-    vars_dict = {}
-    for key in ctx.obj.keys():
-        if key != 'GPU':
-            vars_dict[key] = ctx.obj[key]
-
-    fusion_pipeline(dataset, vars_dict)
+# @cli_general_options.command()
+# @click.option('--dataset',
+#               type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
+#               required=True,
+#               help='Dataset to use'
+#               )
+# @click.pass_context
+# def multimodal(ctx, dataset):
+#     vars_dict = {}
+#     for key in ctx.obj.keys():
+#         if key != 'GPU':
+#             vars_dict[key] = ctx.obj[key]
+#
+#     fusion_pipeline(dataset, vars_dict)
 
 
 @cli_general_options.command()

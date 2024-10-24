@@ -1,5 +1,5 @@
 #!/bin/bash
-[ -e ./logs ] && rm -r ./logs/bm_full_pipeline*
+[ -e ./logs ] && rm -r ./logs/bm_*
 
 sudo rm -R outputs/XRoom/shimmer
 

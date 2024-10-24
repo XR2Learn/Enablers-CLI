@@ -44,17 +44,23 @@ For help with the options and commands, access a list of arguments and their des
 
 ### Examples
 
-- Training:
+- Training (for any supported modality, i.e., audio, bm, body-tracking):
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+Audio (RAVDESS dataset):
 
-- Inference (Predict):
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 predict --dataset ravdess`
 
-- Inference (Multimodal Fusion):
+Bio-measurements (XRoom dataset): 
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model train --dataset Xroom --modality bm --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 multimodal --dataset ravdess`
+Body-tracking(XRoom dataset): 
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model train --dataset Xroom --modality body-tracking --features_type none --ssl_pre_train none --ed_training true`
+
+
+- Inference (Predict for audio modality):
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model predict --dataset ravdess`
 
 - Start Web-based Dashboard (for personalization tool user interface)
 
