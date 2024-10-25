@@ -107,46 +107,47 @@ of speech, for example spectrals, paralinguistic and transformer-based features.
 
 ## Compatibility
 
-CLI `v0.1.0` is compatible with:
+CLI `v1.0.0` is compatible with:
+
+- XR2Learn Training `v.1.0.0`
+- XR2Learn Inference `v.1.0.0`
+- XR2Learn Personalization `v.1.0.0`
+- Magic XRoom (data format) `v.1.0`, `v.1.2`
+
+CLI `v0.6.0` is compatible with:
+
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
+- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`, `v0.6.0`
+- XR2Learn Personalization `v.0.1.X`, `v.0.2.X`
+
+CLI `v0.5.X` is compatible with:
+
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
+- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`
+- XR2Learn Personalization `v.0.1.X`, `v.0.2.X`
+
+CLI `v0.4.X` is compatible with:
 
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
-- XR2Learn Inference `v.0.1.X`
+- XR2Learn Inference `v.0.2.X`, `v.0.3.0`
+- XR2Learn Personalization `v.0.1.X`, `v.0.2.0`
+
+CLI `v0.3.0` is compatible with:
+
+- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
+- XR2Learn Inference `v.0.2.X`
+- XR2Learn Personalization `v.0.1.X`
 
 CLI `v0.2.0` is compatible with:
 
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
 - XR2Learn Inference `v.0.2.X`
 
-CLI `v0.3.0` is compatible with:
+CLI `v0.1.0` is compatible with:
 
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
-- XR2Learn Inference `v.0.2.X`
-- XR2Learn Personalisation `v.0.1.X`
+- XR2Learn Inference `v.0.1.X`
 
-CLI `v0.4.X` is compatible with:
-
-- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.0`
-- XR2Learn Inference `v.0.2.X`, `v.0.3.0`
-- XR2Learn Personalisation `v.0.1.X`, `v.0.2.0`
-
-CLI `v0.5.X` is compatible with:
-
-- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
-- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`
-- XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
-
-CLI `v0.6.0` is compatible with:
-
-- XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
-- XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`, `v0.6.0`
-- XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
-
-CLI `v1.0.0` is compatible with:
-
-- XR2Learn Training `v.1.0.0`
-- XR2Learn Inference `v.1.0.0`
-- XR2Learn Personalisation `v.1.0.0`
-- Magic XRoom (data format) `v.1.0`, `v.1.2`
 
 ### Changelog
 
