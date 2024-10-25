@@ -1,7 +1,16 @@
-version: '3.8'
 services:
   ed-training-audio:
-    image: some.registry.com/xr2learn-enablers/ed-training-audio:latest-gpu
+    image: ghcr.io/xr2learn/ed-training-audio:latest-gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]
+
+  ed-training-body-tracking:
+    image: ghcr.io/xr2learn/ed-training-body-tracking:latest-gpu
     deploy:
       resources:
         reservations:
@@ -11,7 +20,7 @@ services:
               capabilities: [ gpu ]
 
   ssl-audio:
-    image: some.registry.com/xr2learn-enablers/ssl-audio:latest-gpu
+    image: ghcr.io/xr2learn/ssl-audio:latest-gpu
     deploy:
       resources:
         reservations:
@@ -22,7 +31,7 @@ services:
 
 
   ssl-features-generation-audio:
-    image: some.registry.com/xr2learn-enablers/ssl-features-generation-audio:latest-gpu
+    image: ghcr.io/xr2learn/ssl-features-generation-audio:latest-gpu
     deploy:
       resources:
         reservations:
@@ -32,7 +41,7 @@ services:
               capabilities: [ gpu ]
   
   ed-training-bm:
-    image: some.registry.com/xr2learn-enablers/ed-training-bm:latest-gpu
+    image: ghcr.io/xr2learn/ed-training-bm:latest-gpu
     deploy:
       resources:
         reservations:
@@ -42,7 +51,7 @@ services:
               capabilities: [ gpu ]
 
   ssl-bm:
-    image: some.registry.com/xr2learn-enablers/ssl-bm:latest-gpu
+    image: ghcr.io/xr2learn/ssl-bm:latest-gpu
     deploy:
       resources:
         reservations:
@@ -52,7 +61,7 @@ services:
               capabilities: [ gpu ]
 
   ssl-features-generation-bm:
-    image: some.registry.com/xr2learn-enablers/ssl-features-generation-bm:latest-gpu
+    image: ghcr.io/xr2learn/ssl-features-generation-bm:latest-gpu
     deploy:
       resources:
         reservations:

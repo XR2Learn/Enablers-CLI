@@ -3,7 +3,8 @@
 Command-line interface (CLI) is an automated interface that facilitates access to the XR2Learn Personalization Enablers
 training, inference and
 personalization Tools' functionalities. It
-allows users to quickly and easily access the XR2Learn Personalization Enablers use cases. CLI includes simplified installation and commands,
+allows users to quickly and easily access the XR2Learn Personalization Enablers use cases. CLI includes simplified
+installation and commands,
 pre-configured scripts for common use cases, and benchmarks to evaluate the end-to-end workings of the whole pipeline,
 working as an integration test for the system.
 
@@ -14,7 +15,7 @@ To run CLI, you need two elements:
    do
    not provide a JSON configuration file path, the default file is `./configuration.json`).
 
-A default configuration.json file is provided and it can be changed according to the use-case.
+A default configuration.json file is provided, and it can be changed according to the use-case.
 
 ### Pre-requisites
 
@@ -43,38 +44,44 @@ For help with the options and commands, access a list of arguments and their des
 
 ### Examples
 
-- Training:
+- Training (for any supported modality, i.e., audio, bm, body-tracking):
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
+Audio (RAVDESS dataset):
 
-- Inference (Predict):
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model train --dataset ravdess --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 predict --dataset ravdess`
 
-- Inference (Multimodal Fusion):
+Bio-measurements (XRoom dataset): 
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model train --dataset Xroom --modality bm --features_type ssl --ssl_pre_train encoder_fe --ed_training true`
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 multimodal --dataset ravdess`
+Body-tracking(XRoom dataset): 
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model train --dataset Xroom --modality body-tracking --features_type none --ssl_pre_train none --ed_training true`
 
-- Inference (Evaluation):
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id model_001 evaluate --dataset ravdess`
+- Inference (Predict for audio modality):
 
-- Start Web-based DemoUI (for personalisation tool user interface)
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model predict --dataset ravdess`
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py run_personalisation`
+- Start Web-based Dashboard (for personalization tool user interface)
 
-DemoUI can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
+#### Uni modal:
 
-- Stop Web-based DemoUI (for personalisation tool user interface)
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-dashboard --modality bm`
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py stop-demo-ui`
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-dashboard --modality body-tracking`
 
-To run with Inference as publisher set option `--publisher true` when `running the run-demo-ui` command:
+Dashboard can be accessed by [http://127.0.0.1:8000/demo_enabler_six]( http://127.0.0.1:8000/demo_enabler_six)
 
-`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-demo-ui --publisher true --modality bm`
+#### Multi modalities:
 
-(**Note**: Inference as publisher is set as `false` by default and this option overwrites the configuration
-form `configuration.json` for Inference as publisher.)
+`python xr2learn_enablers_cli/xr2learn_enablers.py --experiment_id development-model run-dashboard --modality bm --modality body-tracking`
+
+**Note**: To run Dashboard for one modality or multiqple modalities, the command and the configuration must match, i.e.,
+if you run the dashboard command with one modality, the `configuration.json` file must reflect the same modality.
+
+- Stop Web-based Dashboard (for personalisation tool user interface)
+
+`python xr2learn_enablers_cli/xr2learn_enablers.py stop-dashboard`
 
 ### GPU
 
@@ -129,9 +136,17 @@ CLI `v0.5.X` is compatible with:
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
 
 CLI `v0.6.0` is compatible with:
+
 - XR2Learn Training `v.0.1.0`, `v0.2.0`, `v0.3.X`, `v0.4.0`, `v0.5.0`
 - XR2Learn Inference `v.0.2.X`, `v.0.3.X`, `v0.4.0`, `v0.5.0`, `v0.6.0`
 - XR2Learn Personalisation `v.0.1.X`, `v.0.2.X`
+
+CLI `v1.0.0` is compatible with:
+
+- XR2Learn Training `v.1.0.0`
+- XR2Learn Inference `v.1.0.0`
+- XR2Learn Personalisation `v.1.0.0`
+- Magic XRoom (data format) `v.1.0`, `v.1.2`
 
 ### Changelog
 

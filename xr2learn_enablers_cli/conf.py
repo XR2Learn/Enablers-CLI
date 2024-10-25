@@ -1,4 +1,4 @@
 SUPPORTED_DATASETS = {
     'RAVDESS': 'audio',
-    'BM': 'bm'
+    'XRoom': {'bm', 'body-tracking'}
 }

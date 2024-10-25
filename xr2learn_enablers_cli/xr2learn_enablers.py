@@ -4,7 +4,7 @@ import os
 import click
 
 from xr2learn_enablers_cli.predict import inference_pipeline, fusion_pipeline, evaluation_pipeline
-from xr2learn_enablers_cli.run_personalisation_tool import run_demo_ui_pipeline, stop_demo_ui_pipeline
+from xr2learn_enablers_cli.run_personalisation_tool import run_dashboard_pipeline, stop_demo_ui_pipeline
 from xr2learn_enablers_cli.train import training_pipeline
 
 
@@ -37,12 +37,12 @@ def cli_general_options(ctx, debug, experiment_id, config_file, gpu, log_dir):
 
 @cli_general_options.command()
 @click.option('--dataset',
-              type=click.Choice(['RAVDESS', 'BM'], case_sensitive=False),
+              type=click.Choice(['RAVDESS', 'XRoom'], case_sensitive=False),
               required=True,
               help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
               help='Modality')
-@click.option('--features_type', type=click.Choice(['ssl', 'handcrafted'], case_sensitive=False), required=True,
+@click.option('--features_type', type=click.Choice(['ssl', 'handcrafted', 'none'], case_sensitive=False), required=True,
               help='Type of Features')
 @click.option('--ssl_pre_train',
               type=click.Choice(['encoder_fe', 'encoder_only', 'fe_only', 'none'], case_sensitive=False),
@@ -69,7 +69,7 @@ def train(ctx, modality, ssl_pre_train, ed_training, features_type, dataset):
 
 @cli_general_options.command()
 @click.option('--dataset',
-              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
+              type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
               required=True,
               help='Dataset to use')
 @click.option('--modality', type=click.Choice(['audio', 'bm', 'body-tracking'], case_sensitive=False), required=False,
@@ -84,63 +84,43 @@ def predict(ctx, modality, dataset):
     inference_pipeline(modality, dataset, vars_dict)
 
 
-@cli_general_options.command()
-@click.option('--dataset',
-              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
-              required=True,
-              help='Dataset to use'
-              )
-@click.pass_context
-def multimodal(ctx, dataset):
-    vars_dict = {}
-    for key in ctx.obj.keys():
-        if key != 'GPU':
-            vars_dict[key] = ctx.obj[key]
-
-    fusion_pipeline(dataset, vars_dict)
-
-
-@cli_general_options.command()
-@click.option('--dataset',
-              type=click.Choice(['RAVDESS', "BM"], case_sensitive=False),
-              required=True,
-              help='Dataset to use'
-              )
-@click.pass_context
-def evaluate(ctx, dataset):
-    vars_dict = {}
-    for key in ctx.obj.keys():
-        if key != 'GPU':
-            vars_dict[key] = ctx.obj[key]
-
-    evaluation_pipeline(dataset, vars_dict)
-
-
-def run_personalisation():
-    pass
+# @cli_general_options.command()
+# @click.option('--dataset',
+#               type=click.Choice(['RAVDESS', "XRoom"], case_sensitive=False),
+#               required=True,
+#               help='Dataset to use'
+#               )
+# @click.pass_context
+# def multimodal(ctx, dataset):
+#     vars_dict = {}
+#     for key in ctx.obj.keys():
+#         if key != 'GPU':
+#             vars_dict[key] = ctx.obj[key]
+#
+#     fusion_pipeline(dataset, vars_dict)
 
 
 @cli_general_options.command()
-@click.option('--publisher', required=False, type=bool, default=False,
-              help='Indicates if Inference will act as publisher')
-@click.option('--modality',
-                    type=click.Choice(['audio', 'bm', 'body-tracking'],
-                    case_sensitive=False),
+@click.option('--modality', '-m', multiple=True,
+              type=click.Choice(['audio', 'bm', 'body-tracking'],
+                                case_sensitive=False),
               required=False,
               help='Modality')
 @click.pass_context
-def run_demo_ui(ctx, publisher, modality):
+def run_dashboard(ctx, modality):
     # Stopped here
     vars_dict = {}
     for key in ctx.obj.keys():
         if key != 'GPU':
             vars_dict[key] = ctx.obj[key]
-    vars_dict['PUBLISHER_ON'] = str(publisher)
-    run_demo_ui_pipeline(vars_dict, publisher=publisher, modality=modality)
+
+    # modality is the type tuple
+    modality = list(modality)
+    run_dashboard_pipeline(vars_dict, modality_list=modality)
 
 
 @cli_general_options.command()
-def stop_demo_ui():
+def stop_dashboard():
     stop_demo_ui_pipeline()
 
 
