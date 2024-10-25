@@ -10,7 +10,7 @@ services:
               capabilities: [ gpu ]
 
   ed-training-body-tracking:
-    image: ghcr.io/um-xr2learn-enablers/ed-training-body-tracking:latest-gpu
+    image: ghcr.io/xr2learn/ed-training-body-tracking:latest-gpu
     deploy:
       resources:
         reservations:

@@ -54,7 +54,7 @@ services:
     command: python ssl_features_extraction_audio_modality/generate_features.py
 
   ed-training-audio:
-    image: some.registry.com/xr2learn-enablers/ed-training-audio:latest
+    image: ghcr.io/xr2learn/ed-training-audio:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
