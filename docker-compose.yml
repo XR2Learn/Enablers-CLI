@@ -6,7 +6,7 @@ services:
 
   ########## AUDIO MODALITY SERVICES
   pre-processing-audio:
-    image: some.registry.com/xr2learn-enablers/pre-processing-audio:latest
+    image: ghcr.io/xr2learn/pre-processing-audio:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
@@ -18,7 +18,7 @@ services:
     command: python pre_processing_audio_modality/preprocess.py
 
   handcrafted-features-generation-audio:
-    image: some.registry.com/xr2learn-enablers/handcrafted-features-generation-audio:latest
+    image: ghcr.io/xr2learn/handcrafted-features-generation-audio:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
@@ -30,7 +30,7 @@ services:
     command: python handcrafted_features_extraction_audio_modality/generate_features.py
 
   ssl-audio:
-    image: some.registry.com/xr2learn-enablers/ssl-audio:latest
+    image: ghcr.io/xr2learn/ssl-audio:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
@@ -42,7 +42,7 @@ services:
     command: python ssl_audio_modality/pre_train.py
 
   ssl-features-generation-audio:
-    image: some.registry.com/xr2learn-enablers/ssl-features-generation-audio:latest
+    image: ghcr.io/xr2learn/ssl-features-generation-audio:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
@@ -65,7 +65,7 @@ services:
     command: python supervised_audio_modality/train.py
 
   emotion-classification-audio:
-    image: some.registry.com/xr2learn-enablers/ed-classification-audio:latest
+    image: ghcr.io/xr2learn/ed-classification-audio:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -78,7 +78,7 @@ services:
 
   ########## BIO-MEASUREMENTS (BM) MODALITY SERVICES
   pre-processing-bm:
-    image: some.registry.com/xr2learn-enablers/pre-processing-bm:latest
+    image: ghcr.io/xr2learn/pre-processing-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -89,7 +89,7 @@ services:
     command: python pre_processing_bm_modality/preprocess.py
 
   handcrafted-features-generation-bm:
-    image: some.registry.com/xr2learn-enablers/handcrafted-features-generation-bm:latest
+    image: ghcr.io/xr2learn/handcrafted-features-generation-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -100,7 +100,7 @@ services:
     command: python handcrafted_features_extraction_bm_modality/generate_features.py
 
   ssl-bm:
-    image: some.registry.com/xr2learn-enablers/ssl-bm:latest
+    image: ghcr.io/xr2learn/ssl-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -111,7 +111,7 @@ services:
     command: python ssl_bm_modality/pre_train.py
 
   ssl-features-generation-bm:
-    image: some.registry.com/xr2learn-enablers/ssl-features-generation-bm:latest
+    image: ghcr.io/xr2learn/ssl-features-generation-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -122,7 +122,7 @@ services:
     command: python ssl_features_extraction_bm_modality/generate_features.py
 
   ed-training-bm:
-    image: some.registry.com/xr2learn-enablers/ed-training-bm:latest
+    image: ghcr.io/xr2learn/ed-training-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -133,7 +133,7 @@ services:
     command: python supervised_bm_modality/train.py
 
   emotion-classification-bm:
-    image: some.registry.com/xr2learn-enablers/ed-classification-bm:latest
+    image: ghcr.io/xr2learn/ed-classification-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -157,7 +157,7 @@ services:
     command: python pre_processing_body_tracking_modality/preprocess.py
 
   ed-training-body-tracking:
-    image: some.registry.com/xr2learn-enablers/ed-training-body-tracking:latest
+    image: ghcr.io/xr2learn/ed-training-body-tracking:latest
     volumes:
       - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
       - "./outputs:/app/outputs"
@@ -168,7 +168,7 @@ services:
     command: python supervised_body_tracking_modality/train.py
 
   emotion-classification-body-tracking:
-    image: some.registry.com/xr2learn-enablers/emotion-classification-body-tracking:latest
+    image: ghcr.io/xr2learn/emotion-classification-body-tracking:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -182,7 +182,7 @@ services:
       - redis
 
   fusion-layer:
-    image: some.registry.com/xr2learn-enablers/fusion-layer:latest
+    image: ghcr.io/xr2learn/fusion-layer:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -195,7 +195,7 @@ services:
     command: python multimodal_fusion_layer/predict.py
 
   personalization-tool:
-    image: some.registry.com/xr2learn-enablers/personalization-tool:latest
+    image: ghcr.io/xr2learn/personalization-tool:latest
     working_dir: /app
     environment:
       - REDIS_HOST=redis
@@ -204,7 +204,7 @@ services:
       - redis
 
   dashboard:
-    image: some.registry.com/xr2learn-enablers/dashboard:latest
+    image: ghcr.io/xr2learn/dashboard:latest
     working_dir: /app
     environment:
       - REDIS_HOST=redis
@@ -218,7 +218,7 @@ services:
 
 ### Testing - to remove later
   mock-xroom-writer:
-    image: some.registry.com/xr2learn-enablers/mock-xroom-writer:latest
+    image: ghcr.io/xr2learn/mock-xroom-writer:latest
     volumes:
       - "./datasets/:/app/datasets"
       - "./outputs:/app/outputs"
@@ -228,7 +228,7 @@ services:
 
 
   inference-data-processing-bm:
-    image: some.registry.com/xr2learn-enablers/inference-data-processing-bm:latest
+    image: ghcr.io/xr2learn/inference-data-processing-bm:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
@@ -242,7 +242,7 @@ services:
       - redis
 
   inference-data-processing-body-tracking:
-    image: some.registry.com/xr2learn-enablers/inference-data-processing-body-tracking:latest
+    image: ghcr.io/xr2learn/inference-data-processing-body-tracking:latest
     volumes:
       - "./datasets:/app/datasets"
       - "./outputs:/app/outputs"
