@@ -145,6 +145,17 @@ services:
     command: python emotion_classification_bm_modality/predict.py
 
 ########## BODY TRACKING MODALITY SERVICES
+  pre-processing-body-tracking:
+    image: ghcr.io/xr2learn/pre-processing-body-tracking:latest
+    volumes:
+      - "./datasets:/app/datasets"
+      - "./outputs:/app/outputs"
+      - "${CONFIG_FILE_PATH:-./configuration.json}:/app/configuration.json"
+    working_dir: /app
+    environment:
+      - EXPERIMENT_ID=${EXPERIMENT_ID:-development-model}
+    command: python pre_processing_body_tracking_modality/preprocess.py
+
   ed-training-body-tracking:
     image: some.registry.com/xr2learn-enablers/ed-training-body-tracking:latest
     volumes:
