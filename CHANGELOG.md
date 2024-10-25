@@ -18,9 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactoring
 
 ### Removed
-- Evaluation services - since it has been removed from Inference Tools. 
+- Evaluation services - it has been removed from Inference Tools. 
 - Non-applicable benchmarks (according to the current repositories versions - check version compatibility on README)
-- multimodal click command - since multimodal fusion only supports Pub/Sub now. 
+- multimodal click command - multimodal fusion only supports Pub/Sub now. 
 
 ## [0.6.0] - 2024 - 07 - 25
 ### Added
